@@ -235,25 +235,46 @@ button{cursor:pointer;font-family:var(--sans)}
 .waitlist-bg{position:absolute;inset:0;background-image:url('images/15.png');background-size:cover;background-position:center;opacity:.22;pointer-events:none;filter:brightness(.7)}
 .waitlist-grain{position:absolute;inset:0;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' fill='white'/%3E%3C/svg%3E");pointer-events:none}
 .waitlist-inner{position:relative;z-index:2;max-width:680px;margin:0 auto}
-.waitlist-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(245,240,235,.4);margin-bottom:2rem}
+.waitlist-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(245,240,235,.6);margin-bottom:2rem}
 .waitlist-headline{font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,5vw,4rem);line-height:1.1;color:var(--text-light);margin-bottom:1.5rem}
-.waitlist-body{font-family:var(--sans);font-weight:300;font-size:.88rem;color:rgba(245,240,235,.5);max-width:480px;margin:0 auto 3rem;line-height:1.7}
-.waitlist-form{max-width:480px;margin:0 auto}
+.waitlist-body{font-family:var(--sans);font-weight:300;font-size:.88rem;color:rgba(245,240,235,.7);max-width:480px;margin:0 auto 3rem;line-height:1.7}
+.waitlist-form{max-width:480px;margin:0 auto;transition:opacity .5s var(--ease),max-height .6s var(--ease)}
 .waitlist-form-group{display:flex;border:1.5px solid rgba(245,240,235,.3);transition:border-color .3s}
 .waitlist-form-group:focus-within{border-color:rgba(245,240,235,.6)}
 .waitlist-input{flex:1;padding:1.1rem 1.5rem;background:transparent;border:none;outline:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--text-light)}
-.waitlist-input::placeholder{color:rgba(245,240,235,.35);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+.waitlist-input::placeholder{color:rgba(245,240,235,.5);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
 .waitlist-submit{padding:1.1rem 2rem;background:rgba(245,240,235,.92);border:none;font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bg-deep);transition:all .3s}
 .waitlist-submit:hover{background:var(--text-light)}
-.waitlist-success{display:none;text-align:center;padding:2rem}
-.waitlist-success.active{display:block}
-.waitlist-success p{font-family:var(--serif);font-size:1.3rem;color:var(--text-light)}
-.waitlist-success small{display:block;margin-top:.5rem;font-size:.75rem;color:rgba(245,240,235,.4)}
+
+/* Post-signup follow-up form */
+.waitlist-followup{display:none;max-width:480px;margin:0 auto;text-align:left}
+.waitlist-followup.active{display:block;animation:fadeSlideUp .6s var(--ease) both}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.waitlist-followup-header{font-family:var(--serif);font-size:1.4rem;color:var(--text-light);margin-bottom:.5rem;text-align:center}
+.waitlist-followup-sub{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,235,.6);margin-bottom:2rem;text-align:center;line-height:1.6}
+.waitlist-followup-raffle{background:rgba(245,240,235,.06);border:1px solid rgba(245,240,235,.1);padding:1rem 1.2rem;margin-bottom:2rem;text-align:center}
+.waitlist-followup-raffle p{font-family:var(--sans);font-size:.75rem;color:rgba(245,240,235,.7);line-height:1.6}
+.waitlist-followup-raffle strong{color:var(--text-light);font-weight:500}
+.waitlist-followup label{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.5);margin-bottom:.5rem}
+.waitlist-followup-field{width:100%;padding:1rem 1.2rem;background:transparent;border:1.5px solid rgba(245,240,235,.2);outline:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--text-light);margin-bottom:1.5rem;transition:border-color .3s}
+.waitlist-followup-field:focus{border-color:rgba(245,240,235,.5)}
+.waitlist-followup-field::placeholder{color:rgba(245,240,235,.3);font-size:.75rem}
+textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6}
+.waitlist-followup-submit{width:100%;padding:1.1rem;background:rgba(245,240,235,.92);border:none;font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bg-deep);cursor:pointer;transition:all .3s}
+.waitlist-followup-submit:hover{background:var(--text-light)}
+.waitlist-followup-skip{display:block;margin:1rem auto 0;background:none;border:none;font-family:var(--sans);font-size:.65rem;letter-spacing:.1em;color:rgba(245,240,235,.35);cursor:pointer;transition:color .3s}
+.waitlist-followup-skip:hover{color:rgba(245,240,235,.6)}
+
+.waitlist-confirmed{display:none;text-align:center;padding:2rem}
+.waitlist-confirmed.active{display:block;animation:fadeSlideUp .6s var(--ease) both}
+.waitlist-confirmed p{font-family:var(--serif);font-size:1.3rem;color:var(--text-light)}
+.waitlist-confirmed small{display:block;margin-top:.5rem;font-size:.78rem;color:rgba(245,240,235,.55);line-height:1.6}
+
 .waitlist-counter{margin-top:3rem;display:flex;align-items:center;justify-content:center;gap:1rem}
-.waitlist-counter-line{width:30px;height:1px;background:rgba(245,240,235,.1)}
-.waitlist-counter-text{font-family:var(--sans);font-size:.65rem;letter-spacing:.15em;color:rgba(245,240,235,.3)}
+.waitlist-counter-line{width:30px;height:1px;background:rgba(245,240,235,.15)}
+.waitlist-counter-text{font-family:var(--sans);font-size:.65rem;letter-spacing:.15em;color:rgba(245,240,235,.45)}
 .waitlist-counter-num{font-family:var(--serif);font-size:1.6rem;color:var(--text-light);font-weight:300}
-.waitlist-privacy{font-size:.6rem;color:rgba(245,240,235,.2);margin-top:1.5rem;letter-spacing:.1em}
+.waitlist-privacy{font-size:.6rem;color:rgba(245,240,235,.35);margin-top:1.5rem;letter-spacing:.1em}
 
 /* ═══ FOOTER ═══ */
 .footer{padding:3rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg-deep);border-top:1px solid rgba(245,240,235,.04)}
@@ -269,7 +290,23 @@ button{cursor:pointer;font-family:var(--sans)}
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:968px){
   .nav-links{display:none}
+  .nav-hamburger{display:none}
+  .nav-menu-overlay{display:none}
   .nav-mobile-right{display:flex}
+
+  /* Nav: logo always visible, CTA appears after scrolling past hero */
+  .nav{background:transparent;transition:background .4s ease,padding .4s ease}
+  .nav.scrolled{background:rgba(26,23,20,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  .nav-mobile-cta{opacity:0;pointer-events:none;transition:opacity .4s var(--ease),background .3s,color .3s}
+  .nav.scrolled .nav-mobile-cta{opacity:1;pointer-events:auto}
+
+  /* Hide hero subs on mobile */
+  .hero-subs{display:none}
+  .hero-waitlist{margin-top:1.5rem}
+
+  /* Stack waitlist button below input */
+  .waitlist-form-group{flex-direction:column}
+  .waitlist-submit{padding:1rem}
 
   /* Hero — reframe so lattice/window sits more intentionally, less empty top padding */
   .hero{min-height:100vh;justify-content:flex-end}
@@ -687,9 +724,26 @@ button{cursor:pointer;font-family:var(--sans)}
         <button type="button" class="waitlist-submit" id="waitlistBtn"><span>Join Waitlist</span></button>
       </div>
     </div>
-    <div class="waitlist-success" id="waitlistSuccess">
-      <p>Welcome to the wait.</p>
-      <small>We'll be in touch as the walls take shape.</small>
+
+    <!-- Step 2: Follow-up form (slides in after email) -->
+    <div class="waitlist-followup" id="waitlistFollowup">
+      <p class="waitlist-followup-header">Welcome to the wait.</p>
+      <p class="waitlist-followup-sub">Help us get to know you a little better &mdash; entirely optional.</p>
+      <div class="waitlist-followup-raffle">
+        <p><strong>Enter to win a complimentary one-night stay.</strong><br>Ten guests from the waitlist will be selected for the inaugural season.</p>
+      </div>
+      <label for="followupIndustry">Your industry</label>
+      <input type="text" class="waitlist-followup-field" id="followupIndustry" placeholder="e.g. Architecture, Hospitality, Technology&hellip;">
+      <label for="followupNote">Anything you'd like us to know?</label>
+      <textarea class="waitlist-followup-field" id="followupNote" placeholder="What draws you to the Annex, how you heard about us, or anything at all&hellip;"></textarea>
+      <button type="button" class="waitlist-followup-submit" id="followupSubmitBtn">Submit</button>
+      <button type="button" class="waitlist-followup-skip" id="followupSkipBtn">Skip for now</button>
+    </div>
+
+    <!-- Step 3: Final confirmation -->
+    <div class="waitlist-confirmed" id="waitlistConfirmed">
+      <p>You're in.</p>
+      <small>We'll be in touch as the walls take shape. Good luck in the raffle.</small>
     </div>
     <div class="waitlist-counter">
       <span class="waitlist-counter-line"></span>
@@ -727,7 +781,9 @@ window.addEventListener('scroll',()=>{
     const st=window.pageYOffset;
     const dh=document.documentElement.scrollHeight-window.innerHeight;
     if(dh>0)prog.style.width=(st/dh*100)+'%';
-    document.getElementById('nav').classList.toggle('scrolled',st>80);
+    const heroH=document.getElementById('hero').offsetHeight;
+    const isMobile=window.innerWidth<=968;
+    document.getElementById('nav').classList.toggle('scrolled',isMobile?st>heroH-80:st>80);
     ticking=false;
   });ticking=true}
 },{passive:true});
@@ -843,6 +899,8 @@ if(track){
 }
 
 // ─── Waitlist forms ───
+let waitlistUserEmail='';
+
 function handleWaitlist(emailEl,formEl,successEl,wrapEl){
   const email=emailEl.value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
@@ -850,15 +908,51 @@ function handleWaitlist(emailEl,formEl,successEl,wrapEl){
     setTimeout(()=>emailEl.style.animation='',500);
     return;
   }
+  waitlistUserEmail=email;
   fetch('https://formspree.io/f/YOUR_FORM_ID',{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({email,_subject:'Maana Annex Waitlist'})
   }).catch(()=>{});
-  if(formEl)formEl.style.display='none';
-  if(successEl)successEl.classList.add('active');
-  if(wrapEl)wrapEl.classList.add('success');
+
   const c=document.getElementById('counterNum');
   if(c)c.textContent=parseInt(c.textContent||0)+1;
+
+  // Hero form: simple success
+  if(wrapEl){
+    wrapEl.classList.add('success');
+    return;
+  }
+  // Bottom form: slide to follow-up
+  if(formEl){
+    formEl.style.display='none';
+    document.getElementById('waitlistFollowup').classList.add('active');
+  }
+}
+
+// Follow-up form submit + skip
+function showFinalConfirmation(){
+  document.getElementById('waitlistFollowup').classList.remove('active');
+  document.getElementById('waitlistFollowup').style.display='none';
+  document.getElementById('waitlistConfirmed').classList.add('active');
+}
+
+const followupSubmitBtn=document.getElementById('followupSubmitBtn');
+if(followupSubmitBtn){
+  followupSubmitBtn.addEventListener('click',()=>{
+    const industry=document.getElementById('followupIndustry').value.trim();
+    const note=document.getElementById('followupNote').value.trim();
+    if(industry||note){
+      fetch('https://formspree.io/f/YOUR_FORM_ID',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:waitlistUserEmail,industry,note,_subject:'Maana Annex Waitlist — Details'})
+      }).catch(()=>{});
+    }
+    showFinalConfirmation();
+  });
+}
+const followupSkipBtn=document.getElementById('followupSkipBtn');
+if(followupSkipBtn){
+  followupSkipBtn.addEventListener('click',showFinalConfirmation);
 }
 
 // Hero waitlist
@@ -871,7 +965,7 @@ heroEmail.addEventListener('keypress',e=>{if(e.key==='Enter')document.getElement
 // Bottom waitlist
 const waitlistEmail=document.getElementById('waitlistEmail');
 document.getElementById('waitlistBtn').addEventListener('click',()=>{
-  handleWaitlist(waitlistEmail,document.getElementById('waitlistForm'),document.getElementById('waitlistSuccess'),null);
+  handleWaitlist(waitlistEmail,document.getElementById('waitlistForm'),null,null);
 });
 waitlistEmail.addEventListener('keypress',e=>{if(e.key==='Enter')document.getElementById('waitlistBtn').click()});
 
