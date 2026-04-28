@@ -52,13 +52,33 @@ button{cursor:pointer;font-family:var(--sans)}
 .nav-cta{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);padding:.65rem 1.8rem;border:1px solid rgba(245,240,235,.35);background:transparent;transition:all .3s}
 .nav-cta:hover{background:var(--text-light);color:var(--bg-deep);border-color:var(--text-light)}
 
+/* Mobile nav elements — hidden on desktop */
+.nav-mobile-right{display:none;align-items:center;gap:.8rem}
+.nav-mobile-cta{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);padding:.55rem 1rem;border:1px solid rgba(245,240,235,.5);background:rgba(26,23,20,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all .3s;white-space:nowrap}
+.nav-mobile-cta:hover,.nav-mobile-cta:active{background:var(--text-light);color:var(--bg-deep)}
+.nav-hamburger{width:32px;height:28px;background:transparent;border:none;position:relative;padding:0;display:flex;flex-direction:column;justify-content:center;gap:6px;cursor:pointer}
+.nav-hamburger span{display:block;width:22px;height:1px;background:var(--text-light);transition:transform .35s var(--ease),opacity .3s;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.nav-hamburger.open span:nth-child(1){transform:translateY(3.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){transform:translateY(-3.5px) rotate(-45deg)}
+
+/* Full-screen mobile menu */
+.nav-menu-overlay{position:fixed;inset:0;background:rgba(26,23,20,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:150;opacity:0;pointer-events:none;transition:opacity .45s var(--ease);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.nav-menu-overlay.open{opacity:1;pointer-events:auto}
+.nav-menu-inner{display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center}
+.nav-menu-link{font-family:var(--serif);font-weight:300;font-size:2rem;color:var(--text-light);letter-spacing:.02em;opacity:.85;transition:opacity .3s,transform .5s var(--ease);transform:translateY(12px)}
+.nav-menu-overlay.open .nav-menu-link{transform:translateY(0)}
+.nav-menu-link:hover,.nav-menu-link:active{opacity:1}
+.nav-menu-cta{margin-top:2rem;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bg-deep);background:var(--text-light);border:none;padding:1rem 2.4rem;transition:transform .3s var(--ease)}
+.nav-menu-cta:hover,.nav-menu-cta:active{transform:translateY(-2px)}
+.nav-menu-jp{margin-top:2.5rem;font-family:var(--jp);font-weight:200;font-size:.9rem;color:rgba(245,240,235,.35);letter-spacing:.2em}
+
 /* ═══ HERO ═══ */
 .hero{position:relative;height:100vh;min-height:650px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--bg-deep)}
 .hero-bg{position:absolute;inset:0;background-image:url('images/hero.jpeg');background-size:cover;background-position:center;background-color:#2A2520;transform:scale(1.08);animation:heroZoom 18s ease forwards}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,.25) 0%,rgba(26,23,20,.0) 25%,rgba(26,23,20,.35) 55%,rgba(26,23,20,.85) 100%);z-index:1}
 @keyframes heroZoom{to{transform:scale(1)}}
 
-.hero-credit{position:absolute;z-index:3;bottom:auto;top:50%;left:3rem;transform:translateY(-50%);font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.8);text-shadow:0 2px 16px rgba(0,0,0,.6);line-height:1.8}
+.hero-credit{position:absolute;z-index:3;bottom:auto;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.8);text-shadow:0 2px 16px rgba(0,0,0,.6);line-height:1.8;text-align:center}
 .hero-credit strong{font-weight:500;display:block;font-size:.95rem;letter-spacing:.12em}
 
 .hero-title-wrap{position:relative;z-index:3;width:100%;padding:0 3rem;margin-bottom:1rem}
@@ -104,6 +124,9 @@ button{cursor:pointer;font-family:var(--sans)}
 .story-step-detail{font-family:var(--sans);font-weight:300;font-size:.72rem;line-height:1.7;color:var(--text-muted);margin-top:1.2rem}
 .story-step-divider{width:40px;height:1px;background:var(--earth);opacity:.3;margin-top:2rem}
 .story-step-jp{font-family:var(--jp);font-weight:200;font-size:.8rem;color:var(--text-muted);margin-top:.8rem;opacity:.6}
+
+/* Mobile-only inline story images — hidden on desktop */
+.story-step-img{display:none}
 
 /* ═══ VIDEO INTERLUDE — tsuchikabe process ═══ */
 .video-interlude{display:grid;grid-template-columns:1fr 1fr;min-height:60vh;background:var(--bg-deep)}
@@ -246,41 +269,90 @@ button{cursor:pointer;font-family:var(--sans)}
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:968px){
   .nav-links{display:none}
-  .hero-credit{position:relative;top:auto;left:auto;transform:none;text-align:center;padding:0 2rem;margin-bottom:2rem}
-  .hero-title-line{flex-direction:column;gap:.3rem;align-items:center}
-  .hero-subs{flex-direction:column;align-items:center;text-align:center;gap:.5rem}
+  .nav-mobile-right{display:flex}
+
+  /* Hero — reframe so lattice/window sits more intentionally, less empty top padding */
+  .hero{min-height:100vh;justify-content:flex-end}
+  .hero-bg{background-position:center 62%;transform:scale(1.04);animation:heroZoomM 22s ease forwards}
+  @keyframes heroZoomM{to{transform:scale(1)}}
+  .hero-overlay{background:linear-gradient(180deg,rgba(26,23,20,.35) 0%,rgba(26,23,20,.05) 30%,rgba(26,23,20,.25) 55%,rgba(26,23,20,.88) 100%)}
+
+  .hero-credit{position:relative;top:auto;left:auto;transform:none;text-align:center;padding:0 2rem;margin-bottom:1.5rem}
+  .hero-credit strong{font-size:.78rem;letter-spacing:.15em}
+  .hero-title-wrap{margin-bottom:.6rem}
+  .hero-title-line{flex-direction:column;gap:.1rem;align-items:center}
+  .hero-title-word{font-size:clamp(4rem,16vw,7rem);line-height:.9}
+  .hero-subs{flex-direction:column;align-items:center;text-align:center;gap:.9rem;margin-bottom:1.8rem}
   .hero-sub-right{text-align:center}
+  .hero-waitlist{margin-bottom:5vh}
+
   .story-layout{flex-direction:column}
   .story-images{display:none}
-  .story-steps{width:100%;padding:4rem 2rem}
-  .story-step{min-height:auto;padding:2rem 0}
+  .story-steps{width:100%;padding:1rem 0}
+
+  /* Text above, image below */
+  .story-step{min-height:auto;padding:0;flex-direction:column}
+  .story-step-inner{padding:2.5rem 2rem 1.5rem}
+  .story-step-img{display:block;width:100%;height:auto;object-fit:contain;filter:brightness(.85) saturate(.95)}
   .video-interlude{grid-template-columns:1fr}
   .design-inner{grid-template-columns:1fr}
-  .architects-grid{grid-template-columns:1fr}
+
+  /* Architects — tighter stacked cards on mobile */
+  .architects-grid{grid-template-columns:1fr;gap:1rem}
+  .architect-card{padding:1.8rem 1.5rem}
+  .architect-card-img{aspect-ratio:16/10;margin-bottom:1.25rem}
+  .architect-card-name{font-size:1.5rem;margin-bottom:.6rem}
+  .architect-card-role{margin-bottom:.8rem}
+  .architect-card-body{font-size:.8rem;line-height:1.7}
+  .architects-header{margin-bottom:2.5rem}
+
   .furniture-inner{grid-template-columns:1fr}
   .furniture-image{min-height:50vh}
+
+  /* Materials — 2-col grid on mobile, no horizontal scroll */
   .materials-header{flex-direction:column;align-items:flex-start;gap:1rem}
   .materials-body{text-align:left}
-  .timeline-header{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .materials-track{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 1rem;overflow-x:visible;cursor:default}
+  .material-card{flex:initial;width:100%}
+  .material-card:nth-child(even){margin-top:0}
+  .material-card-img{height:200px;margin-bottom:.75rem}
+  .materials-hint{display:none}
+
+  /* Timeline — shrink whole bar to fit mobile width, no horizontal scroll */
+  .timeline-header{flex-direction:column;align-items:flex-start;gap:.5rem;margin-bottom:2rem}
+  .timeline-track{gap:2px;overflow-x:visible}
+  .timeline-item{flex:1 1 0;min-width:0;padding:1rem .55rem}
+  .timeline-dot{width:5px;height:5px;margin-bottom:.7rem}
+  .timeline-season{font-size:.52rem;letter-spacing:.14em;margin-bottom:.4rem}
+  .timeline-label{font-size:.78rem;line-height:1.25}
+  .timeline-detail{display:none}
+
   .footer{flex-direction:column;gap:1.5rem;text-align:center}
   .footer-links{flex-wrap:wrap;justify-content:center}
 }
 @media(max-width:600px){
-  .hero-credit{font-size:.7rem;margin-bottom:1.5rem}
+  .hero-credit{font-size:.68rem;margin-bottom:1.2rem}
   .hero-title-wrap{padding:0 1.5rem}
   .hero-subs{padding:0 1.5rem}
   .hero-waitlist{width:92%;flex-direction:column}
   .hero-waitlist-btn{padding:.8rem}
-  .nav{padding:1.2rem 1.5rem}
-  .story-steps{padding:3rem 1.5rem}
+  .nav{padding:1.2rem 1.25rem}
+  .nav-mobile-cta{font-size:.5rem;padding:.5rem .8rem;letter-spacing:.15em}
+  .story-steps{padding:.5rem 0}
+  .story-step-inner{padding:2rem 1.5rem 1.2rem}
   .design{padding:3rem 1.5rem}
   .materials-header{padding:0 1.5rem}
-  .materials-track{padding:0 1.5rem}
-  .architects{padding:3rem 1.5rem}
+  .materials-track{padding:0 1.5rem;gap:1rem .75rem}
+  .material-card-img{height:170px}
+  .architects{padding:3rem 1rem}
   .furniture-text{padding:2rem 1.5rem}
-  .timeline-section{padding:3rem 1.5rem}
+  .timeline-section{padding:3rem 1rem}
+  .timeline-item{padding:.9rem .4rem}
+  .timeline-season{font-size:.48rem}
+  .timeline-label{font-size:.72rem}
   .waitlist{padding:4rem 1.5rem}
   .footer{padding:2rem 1.5rem}
+  .nav-menu-link{font-size:1.7rem}
 }
 </style>
 </head>
@@ -299,7 +371,26 @@ button{cursor:pointer;font-family:var(--sans)}
     <a href="#materials" class="nav-link">Materials</a>
     <button class="nav-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
   </div>
+  <div class="nav-mobile-right">
+    <button class="nav-mobile-cta" id="navMobileCta">Join Waitlist</button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile full-screen menu -->
+<div class="nav-menu-overlay" id="navMenuOverlay" aria-hidden="true">
+  <div class="nav-menu-inner">
+    <a href="#story" class="nav-menu-link">Story</a>
+    <a href="#architects" class="nav-menu-link">Architects</a>
+    <a href="#furniture" class="nav-menu-link">Furniture</a>
+    <a href="#materials" class="nav-menu-link">Materials</a>
+    <a href="#timeline" class="nav-menu-link">Journey</a>
+    <button class="nav-menu-cta" id="navMenuCta">Join Waitlist</button>
+    <p class="nav-menu-jp">眞名 別館</p>
+  </div>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
@@ -337,56 +428,60 @@ button{cursor:pointer;font-family:var(--sans)}
   <div class="story-layout">
     <!-- Image panel: CSS sticky — stays fixed while story-steps scroll -->
     <div class="story-images" id="storyImages">
-      <img class="story-img active" id="storyImg0" src="images/light.jpeg" alt="Light filtering through lattice">
-      <img class="story-img" id="storyImg1" src="images/16.png" alt="Kitchen detail with earthen plaster">
-      <img class="story-img" id="storyImg2" src="images/1.png" alt="Hands weaving bamboo lattice">
-      <img class="story-img" id="storyImg3" src="images/breath.jpeg" alt="Rock garden with light beam">
-      <span class="story-img-label active" id="storyLabel0">Fukakusa clay &mdash; morning light</span>
-      <span class="story-img-label" id="storyLabel1">Seven coats of patience</span>
-      <span class="story-img-label" id="storyLabel2">A craftsman's mark</span>
-      <span class="story-img-label" id="storyLabel3">The garden breathes</span>
+      <img class="story-img active" id="storyImg0" src="images/story-grain.png" alt="Ceramic vase and branch on wooden bench against earthen plaster wall">
+      <img class="story-img" id="storyImg1" src="images/story-light.png" alt="Woven lantern catching afternoon light through shoji">
+      <img class="story-img" id="storyImg2" src="images/story-hands.png" alt="Clay vessel resting on aged timber pedestal">
+      <img class="story-img" id="storyImg3" src="images/story-interval.png" alt="Reclaimed wood frame on textured wall above dining table">
+      <span class="story-img-label active" id="storyLabel0">Where tradition meets intention</span>
+      <span class="story-img-label" id="storyLabel1">Light as timekeeper</span>
+      <span class="story-img-label" id="storyLabel2">The memory of making</span>
+      <span class="story-img-label" id="storyLabel3">A room that waits with you</span>
     </div>
 
     <div class="story-steps" id="storySteps">
       <div class="story-step" data-step="0">
         <div class="story-step-inner reveal">
           <span class="story-step-num">01</span>
-          <h3 class="story-step-title">The Earth</h3>
-          <p class="story-step-body">Clay sourced from Kyoto's Fukakusa district, prized for its iron-rich warmth and the way it catches the first hour of morning light. Each handful carries centuries of volcanic history, lending the walls a depth that no manufactured material can replicate.</p>
-          <p class="story-step-detail">Fukakusa clay has been used in Kyoto's finest tea rooms for over four hundred years. Its natural iron content creates a warm ochre that shifts in tone throughout the day as the angle of light changes.</p>
-          <p class="story-step-jp">深草の土 — 朝の光に染まる鉄分の温もり</p>
+          <h3 class="story-step-title">The Grain</h3>
+          <p class="story-step-body">The Annex is built where Japanese tradition and contemporary design meet without compromise. Tsuchikabe earth walls sit alongside clean Scandinavian lines. Karimoku joinery shares a room with hinoki timber beams. Nothing here is nostalgic for its own sake — every traditional element earns its place by making the space feel more present, more grounded, more alive.</p>
+          <p class="story-step-detail">Norm Architects and Keiji Ashizawa Design share a belief that restraint is not minimalism — it is knowing which traditions to carry forward and which to leave behind. The Annex is their answer: a house where four centuries of Kyoto craft live quietly inside a modern floor plan.</p>
+          <p class="story-step-jp">伝統と現代の交差 — 新しい日本の住まい</p>
           <div class="story-step-divider"></div>
         </div>
+        <img class="story-step-img" src="images/story-grain.png" alt="Ceramic vase and branch on wooden bench against earthen plaster wall" loading="lazy">
       </div>
       <div class="story-step" data-step="1">
         <div class="story-step-inner reveal">
           <span class="story-step-num">02</span>
-          <h3 class="story-step-title">The Layers</h3>
-          <p class="story-step-body">Seven coats applied over months. Each layer must dry and settle before the next — a meditation on patience that produces walls with a luminous, almost translucent quality impossible to achieve in a single application.</p>
-          <p class="story-step-detail">The base coat uses rough straw mixed with clay for structural integrity. Middle layers graduate to finer sand. The finish coat receives the plasterer's most careful attention — a surface so refined it seems to hold light within itself.</p>
-          <p class="story-step-jp">七層の塗り — 忍耐という瞑想</p>
+          <h3 class="story-step-title">The Light</h3>
+          <p class="story-step-body">At the Annex, light is not decoration — it is the clock. A central light well tracks the sun's path across interior clay walls, marking morning in warm ochre and afternoon in long, quiet shadows. The house was designed so that you feel the hour without checking it, so that the rhythm of a day in Kyoto writes itself across the rooms you inhabit.</p>
+          <p class="story-step-detail">Every window angle and shoji screen was calibrated during design to shape how light enters and leaves each room. By evening, the walls hold a residual warmth that no artificial source can replicate — a quality the plasterers call "breathing light."</p>
+          <p class="story-step-jp">光は時計 — 一日のリズムを刻む家</p>
           <div class="story-step-divider"></div>
         </div>
+        <img class="story-step-img" src="images/story-light.png" alt="Woven lantern catching afternoon light through shoji" loading="lazy">
       </div>
       <div class="story-step" data-step="2">
         <div class="story-step-inner reveal">
           <span class="story-step-num">03</span>
-          <h3 class="story-step-title">The Hand</h3>
-          <p class="story-step-body">Master plasterer's trowel marks are left intentionally visible — proof that a human shaped this space for another human. In a world of machine-perfect surfaces, the Annex chooses the warmth of imperfection.</p>
-          <p class="story-step-detail">Each craftsman develops their own rhythm with the trowel — subtle arcs and pressures that become a kind of signature embedded in the walls. No two rooms will look the same.</p>
-          <p class="story-step-jp">鏝の跡 — 人の手が残す証</p>
+          <h3 class="story-step-title">The Hands</h3>
+          <p class="story-step-body">Every surface and texture in the Annex carries the memory of the hands that shaped it. The plasterer's trowel arcs are left visible in the walls. The joiner's chisel marks remain in the timber joints. The ceramicist's fingerprints rest in the glaze. In a world of machine-perfect surfaces, the Annex is built by people, for people — and it shows.</p>
+          <p class="story-step-detail">More than a dozen artisans will contribute to the finished house, each bringing a craft tradition passed through generations. No two rooms will bear the same marks. The imperfections are not flaws — they are proof that someone cared enough to be here.</p>
+          <p class="story-step-jp">手の記憶 — すべての表面に宿る人の証</p>
           <div class="story-step-divider"></div>
         </div>
+        <img class="story-step-img" src="images/story-hands.png" alt="Clay vessel resting on aged timber pedestal" loading="lazy">
       </div>
       <div class="story-step" data-step="3">
         <div class="story-step-inner reveal">
           <span class="story-step-num">04</span>
-          <h3 class="story-step-title">The Breath</h3>
-          <p class="story-step-body">Tsuchikabe walls absorb and release moisture like living tissue, creating a microclimate of quiet comfort. In summer they draw humidity from the air; in winter they release it. The house breathes so you can too.</p>
-          <p class="story-step-detail">This natural humidity regulation is one reason tsuchikabe has endured for centuries in Kyoto's extreme climate — scorching humid summers and cold dry winters. The walls respond where mechanical systems merely react.</p>
-          <p class="story-step-jp">壁は呼吸する — 静かな快適の微気候</p>
+          <h3 class="story-step-title">The Interval</h3>
+          <p class="story-step-body">The Annex is designed to slow you down. The entrance narrows before it opens. Corridors turn so you cannot see everything at once. A garden appears where you did not expect it. These are not architectural tricks — they are invitations to pause, drawn from the spatial wisdom of the machiya tradition, where every threshold marks a shift in atmosphere and attention.</p>
+          <p class="story-step-detail">The Japanese concept of ma — the meaningful void between things — is the Annex's hidden architect. Rooms are shaped not only by what fills them, but by the silence and stillness they protect.</p>
+          <p class="story-step-jp">間 — 余白が導く静寂の建築</p>
           <div class="story-step-divider"></div>
         </div>
+        <img class="story-step-img" src="images/story-interval.png" alt="Reclaimed wood frame on textured wall above dining table" loading="lazy">
       </div>
     </div>
   </div>
@@ -492,44 +587,34 @@ button{cursor:pointer;font-family:var(--sans)}
   </div>
   <div class="materials-track" id="materialsTrack">
     <div class="material-card float-up">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/light2.jpeg')"></div></div>
+      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/mat-tsuchikabe.png')"></div></div>
       <p class="material-card-en">Earthen Plaster</p>
       <p class="material-card-jp">土壁</p>
     </div>
     <div class="material-card float-up float-up-d1">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/焼杉.jpg')"></div></div>
-      <p class="material-card-en">Charred Cedar</p>
-      <p class="material-card-jp">焼杉</p>
+      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/mat-wood.png')"></div></div>
+      <p class="material-card-en">Hinoki Cypress</p>
+      <p class="material-card-jp">檜</p>
     </div>
     <div class="material-card float-up float-up-d2">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/washi.jpeg')"></div></div>
+      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/mat-washi.png')"></div></div>
       <p class="material-card-en">Washi &amp; Shoji</p>
       <p class="material-card-jp">和紙</p>
     </div>
     <div class="material-card float-up">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/norm-wood.jpeg')"></div></div>
-      <p class="material-card-en">Hinoki Cypress</p>
-      <p class="material-card-jp">檜</p>
+      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/mat-tatami.png')"></div></div>
+      <p class="material-card-en">Woven Tatami</p>
+      <p class="material-card-jp">畳</p>
     </div>
     <div class="material-card float-up float-up-d1">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/1.png')"></div></div>
-      <p class="material-card-en">Woven Bamboo</p>
-      <p class="material-card-jp">竹</p>
+      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/mat-araidashi.png')"></div></div>
+      <p class="material-card-en">Araidashi</p>
+      <p class="material-card-jp">洗い出し</p>
     </div>
     <div class="material-card float-up float-up-d2">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/norm-textile.jpeg')"></div></div>
-      <p class="material-card-en">Natural Linen</p>
-      <p class="material-card-jp">麻</p>
-    </div>
-    <div class="material-card float-up">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/breath.jpeg')"></div></div>
-      <p class="material-card-en">Garden Stone</p>
-      <p class="material-card-jp">石</p>
-    </div>
-    <div class="material-card float-up float-up-d1">
-      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/norm-fabric.jpeg')"></div></div>
-      <p class="material-card-en">Tanned Hide</p>
-      <p class="material-card-jp">革</p>
+      <div class="material-card-img"><div class="material-card-img-inner" style="background-image:url('images/mat-bamboo.png')"></div></div>
+      <p class="material-card-en">Woven Bamboo</p>
+      <p class="material-card-jp">竹</p>
     </div>
   </div>
   <p class="materials-hint reveal">Drag to explore &rarr;</p>
@@ -685,6 +770,53 @@ const stepObs=new IntersectionObserver(entries=>{
   });
 },{threshold:.4});
 storySteps.forEach(s=>stepObs.observe(s));
+
+// ─── Mobile nav: hamburger + waitlist CTA ───
+const navHamburger=document.getElementById('navHamburger');
+const navMenuOverlay=document.getElementById('navMenuOverlay');
+const navMobileCta=document.getElementById('navMobileCta');
+const navMenuCta=document.getElementById('navMenuCta');
+
+function closeMobileMenu(){
+  if(!navMenuOverlay)return;
+  navMenuOverlay.classList.remove('open');
+  navMenuOverlay.setAttribute('aria-hidden','true');
+  navHamburger.classList.remove('open');
+  navHamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+function openMobileMenu(){
+  if(!navMenuOverlay)return;
+  navMenuOverlay.classList.add('open');
+  navMenuOverlay.setAttribute('aria-hidden','false');
+  navHamburger.classList.add('open');
+  navHamburger.setAttribute('aria-expanded','true');
+  document.body.style.overflow='hidden';
+}
+if(navHamburger){
+  navHamburger.addEventListener('click',()=>{
+    if(navHamburger.classList.contains('open'))closeMobileMenu();else openMobileMenu();
+  });
+}
+// Close menu when a deep link is tapped (smooth scroll handler runs after)
+document.querySelectorAll('.nav-menu-link').forEach(a=>{
+  a.addEventListener('click',()=>closeMobileMenu());
+});
+if(navMobileCta){
+  navMobileCta.addEventListener('click',()=>{
+    document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});
+  });
+}
+if(navMenuCta){
+  navMenuCta.addEventListener('click',()=>{
+    closeMobileMenu();
+    setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),220);
+  });
+}
+// Close on Escape
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&navMenuOverlay&&navMenuOverlay.classList.contains('open'))closeMobileMenu();
+});
 
 // ─── Smooth scroll for anchor links ───
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
