@@ -73,23 +73,20 @@ button{cursor:pointer;font-family:var(--sans)}
 .nav-menu-jp{margin-top:2.5rem;font-family:var(--jp);font-weight:200;font-size:.9rem;color:rgba(245,240,235,.35);letter-spacing:.2em}
 
 /* ═══ HERO ═══ */
-.hero{position:relative;height:100vh;min-height:650px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--bg-deep)}
+.hero{position:relative;height:100vh;min-height:650px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:6.125rem;overflow:hidden;background:var(--bg-deep)}
 .hero-bg{position:absolute;inset:0;background-image:url('images/hero.jpeg');background-size:cover;background-position:center;background-color:#2A2520;transform:scale(1.08);animation:heroZoom 18s ease forwards}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,.25) 0%,rgba(26,23,20,.0) 25%,rgba(26,23,20,.35) 55%,rgba(26,23,20,.85) 100%);z-index:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,.3) 0%,rgba(26,23,20,.15) 20%,rgba(26,23,20,.25) 45%,rgba(26,23,20,.4) 70%,rgba(26,23,20,.6) 100%);z-index:1}
 @keyframes heroZoom{to{transform:scale(1)}}
 
-.hero-credit{position:absolute;z-index:3;bottom:auto;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.8);text-shadow:0 2px 16px rgba(0,0,0,.6);line-height:1.8;text-align:center}
-.hero-credit strong{font-weight:500;display:block;font-size:.95rem;letter-spacing:.12em}
+.hero-credit{position:relative;z-index:3;font-family:var(--sans);font-weight:300;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.9);text-shadow:0 2px 16px rgba(0,0,0,.6);line-height:1.8;text-align:center;margin-bottom:2.5rem}
+.hero-credit strong{font-weight:500;display:block;font-size:.8rem;letter-spacing:.12em}
 
-.hero-title-wrap{position:relative;z-index:3;width:100%;padding:0 3rem;margin-bottom:1rem}
+.hero-title-wrap{position:relative;z-index:3;width:100%;padding:0 3rem;margin-bottom:1.5rem}
 .hero-title-line{display:flex;justify-content:center;align-items:baseline;gap:clamp(1.2rem,3vw,3rem)}
 .hero-title-word{font-family:var(--serif);font-weight:300;font-size:clamp(4.5rem,11vw,10rem);line-height:.88;color:var(--text-light);text-shadow:0 4px 40px rgba(0,0,0,.5);letter-spacing:.06em}
 
-.hero-subs{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:flex-start;padding:0 3rem;margin-bottom:1.5rem;max-width:1100px;width:100%;margin-left:auto;margin-right:auto}
-.hero-sub{font-family:var(--sans);font-weight:300;font-size:.8rem;letter-spacing:.1em;color:rgba(245,240,235,.7);line-height:1.7;text-shadow:0 2px 12px rgba(0,0,0,.5)}
-.hero-sub-right{text-align:right}
 
-.hero-waitlist{position:relative;z-index:3;display:flex;max-width:520px;width:88%;margin:0 auto 8vh;border:1.5px solid rgba(245,240,235,.5);background:rgba(26,23,20,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hero-waitlist{position:relative;z-index:3;display:flex;max-width:520px;width:88%;margin:0 auto;border:1.5px solid rgba(245,240,235,.5);background:rgba(26,23,20,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .hero-waitlist-input{flex:1;padding:1rem 1.4rem;background:transparent;border:none;outline:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--text-light);letter-spacing:.04em}
 .hero-waitlist-input::placeholder{color:rgba(245,240,235,.5);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .hero-waitlist-btn{padding:1rem 2rem;background:rgba(245,240,235,.92);border:none;font-family:var(--sans);font-weight:500;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bg-deep);transition:all .3s;white-space:nowrap}
@@ -97,6 +94,38 @@ button{cursor:pointer;font-family:var(--sans)}
 .hero-waitlist-msg{display:none;font-family:var(--serif);font-size:1.1rem;color:var(--text-light);padding:1rem 1.5rem}
 .hero-waitlist.success .hero-waitlist-input,.hero-waitlist.success .hero-waitlist-btn{display:none}
 .hero-waitlist.success .hero-waitlist-msg{display:block}
+
+/* Hero follow-up section (appears below hero after email signup) */
+.hero-followup-section{display:none;background:var(--bg-deep);padding:clamp(5rem,8vh,7rem) 2rem;overflow:hidden}
+.hero-followup-section.active{display:block;animation:fadeSlideUp .6s var(--ease) both}
+
+/* Hero follow-up form (raffle) */
+.hero-followup{display:block;position:relative;z-index:3;max-width:520px;width:100%;margin:0 auto;text-align:left}
+.hero-followup.hidden{display:none}
+.hero-followup-header{font-family:var(--serif);font-size:1.3rem;color:var(--text-light);margin-bottom:.4rem;text-align:center}
+.hero-followup-sub{font-family:var(--sans);font-size:.75rem;color:rgba(245,240,235,.6);margin-bottom:1.5rem;text-align:center;line-height:1.6}
+.hero-followup-raffle{background:rgba(245,240,235,.06);border:1px solid rgba(245,240,235,.1);padding:.8rem 1rem;margin-bottom:1.5rem;text-align:center}
+.hero-followup-raffle p{font-family:var(--sans);font-size:.72rem;color:rgba(245,240,235,.7);line-height:1.6}
+.hero-followup-raffle strong{color:var(--text-light);font-weight:500}
+.hero-followup label{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.5);margin-bottom:.4rem}
+.hero-followup-field{width:100%;padding:.85rem 1rem;background:transparent;border:1.5px solid rgba(245,240,235,.2);outline:none;font-family:var(--sans);font-weight:300;font-size:.82rem;color:var(--text-light);margin-bottom:1.2rem;transition:border-color .3s}
+.hero-followup-field:focus{border-color:rgba(245,240,235,.5)}
+.hero-followup-field::placeholder{color:rgba(245,240,235,.3);font-size:.72rem}
+textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
+.hero-followup-submit{width:100%;padding:1rem;background:rgba(245,240,235,.92);border:none;font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bg-deep);cursor:pointer;transition:all .3s}
+.hero-followup-submit:hover{background:var(--text-light)}
+.hero-followup-skip{display:block;margin:.8rem auto 0;background:none;border:none;font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;color:rgba(245,240,235,.35);cursor:pointer;transition:color .3s}
+.hero-followup-skip:hover{color:rgba(245,240,235,.6)}
+.hero-confirmed{display:none;text-align:center;padding:2rem;max-width:520px;margin:0 auto}
+.hero-confirmed.active{display:block;animation:fadeSlideUp .6s var(--ease) both}
+.hero-confirmed p{font-family:var(--serif);font-size:1.3rem;color:var(--text-light)}
+.hero-confirmed small{display:block;margin-top:.5rem;font-size:.78rem;color:rgba(245,240,235,.55);line-height:1.6}
+
+/* Required field asterisk */
+.required-star{color:#e74c3c;font-weight:600;font-size:.7rem}
+
+/* Validation error state */
+.field-error{border-color:#e74c3c !important}
 
 .hero-scroll{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:3;width:1px;height:30px;background:rgba(245,240,235,.1);overflow:hidden}
 .hero-scroll::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:rgba(245,240,235,.5);animation:scrollDown 2s ease infinite}
@@ -128,6 +157,18 @@ button{cursor:pointer;font-family:var(--sans)}
 /* Mobile-only inline story images — hidden on desktop */
 .story-step-img{display:none}
 
+/* ═══ TSUCHIKABE — the star section ═══ */
+.tsuchikabe{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--bg-deep)}
+.tsuchikabe-img{position:absolute;inset:0;z-index:0}
+.tsuchikabe-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.9)}
+.tsuchikabe-gradient{position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(26,23,20,.85) 0%,rgba(26,23,20,.4) 35%,rgba(26,23,20,.05) 65%,rgba(26,23,20,.2) 100%)}
+.tsuchikabe-content{position:relative;z-index:2;max-width:720px;padding:0 3rem clamp(4rem,8vh,7rem);color:var(--text-light)}
+.tsuchikabe-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,240,235,.45);margin-bottom:1.5rem}
+.tsuchikabe-title{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5vw,4rem);line-height:1.1;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:.01em}
+.tsuchikabe-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.9;color:rgba(245,240,235,.75);max-width:540px}
+.tsuchikabe-body + .tsuchikabe-body{margin-top:1rem}
+.tsuchikabe-jp{font-family:var(--jp);font-weight:200;font-size:.85rem;color:rgba(245,240,235,.3);margin-top:1.5rem;letter-spacing:.1em}
+
 /* ═══ VIDEO INTERLUDE — tsuchikabe process ═══ */
 .video-interlude{display:grid;grid-template-columns:1fr 1fr;min-height:60vh;background:var(--bg-deep)}
 .video-interlude-panel{position:relative;overflow:hidden;min-height:40vh}
@@ -153,6 +194,12 @@ button{cursor:pointer;font-family:var(--sans)}
 .vision-inner{position:relative;z-index:2;padding:clamp(7rem,16vh,14rem) 3rem;text-align:center;max-width:850px;margin:0 auto}
 .vision-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.55;color:var(--text-light);margin-bottom:2rem}
 .vision-cite{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,235,.45)}
+
+/* Light background variant */
+.vision-light{background:var(--bg)}
+.vision-light video{display:none}
+.vision-light .vision-text{color:var(--text);font-style:italic}
+.vision-light .vision-cite{color:var(--text-muted)}
 
 /* ═══ ARCHITECTS ═══ */
 .architects{background:var(--bg-deep);padding:clamp(5rem,10vh,10rem) 3rem}
@@ -180,8 +227,17 @@ button{cursor:pointer;font-family:var(--sans)}
 .furniture-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem}
 .furniture-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--text);margin-bottom:1.5rem}
 .furniture-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:var(--text-sec);margin-bottom:1.5rem}
-.furniture-detail{font-family:var(--sans);font-weight:300;font-size:.75rem;line-height:1.7;color:var(--text-muted)}
-.furniture-jp{font-family:var(--jp);font-weight:200;font-size:.85rem;color:var(--text-muted);margin-top:1.2rem;opacity:.5}
+
+/* ═══ MADE BY / COLLABORATORS ═══ */
+.made-by{position:relative;background:var(--bg);padding:clamp(6rem,12vh,12rem) 3rem;overflow:hidden}
+.made-by-inner{max-width:800px;margin:0 auto;text-align:center}
+.made-by-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:clamp(3rem,5vh,5rem)}
+.made-by-list{display:flex;flex-direction:column;align-items:center;gap:0}
+.made-by-item{padding:1.4rem 0;border-bottom:1px solid rgba(26,23,20,.06);width:100%;display:flex;justify-content:center;align-items:baseline;gap:.8rem}
+.made-by-item:first-child{border-top:1px solid rgba(26,23,20,.06)}
+.made-by-name{font-family:var(--serif);font-weight:300;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--text);line-height:1.2;letter-spacing:.01em}
+.made-by-dot{font-family:var(--sans);font-size:.8rem;color:var(--text-muted);opacity:.4;flex-shrink:0}
+.made-by-role{font-family:var(--sans);font-weight:300;font-size:clamp(.75rem,1.2vw,1rem);color:var(--text-muted);letter-spacing:.04em;white-space:nowrap}
 
 /* ═══ MATERIALS — horizontal drag gallery ═══ */
 .materials{padding:clamp(5rem,10vh,10rem) 0;background:var(--bg);overflow:hidden}
@@ -300,28 +356,22 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .nav-mobile-cta{opacity:0;pointer-events:none;transition:opacity .4s var(--ease),background .3s,color .3s}
   .nav.scrolled .nav-mobile-cta{opacity:1;pointer-events:auto}
 
-  /* Hide hero subs on mobile */
-  .hero-subs{display:none}
-  .hero-waitlist{margin-top:1.5rem}
-
   /* Stack waitlist button below input */
   .waitlist-form-group{flex-direction:column}
   .waitlist-submit{padding:1rem}
 
-  /* Hero — reframe so lattice/window sits more intentionally, less empty top padding */
-  .hero{min-height:100vh;justify-content:flex-end}
+  /* Hero — centered layout on mobile */
+  .hero{min-height:100vh}
   .hero-bg{background-position:center 62%;transform:scale(1.04);animation:heroZoomM 22s ease forwards}
   @keyframes heroZoomM{to{transform:scale(1)}}
-  .hero-overlay{background:linear-gradient(180deg,rgba(26,23,20,.35) 0%,rgba(26,23,20,.05) 30%,rgba(26,23,20,.25) 55%,rgba(26,23,20,.88) 100%)}
+  .hero-overlay{background:linear-gradient(180deg,rgba(26,23,20,.35) 0%,rgba(26,23,20,.1) 30%,rgba(26,23,20,.3) 55%,rgba(26,23,20,.7) 100%)}
 
-  .hero-credit{position:relative;top:auto;left:auto;transform:none;text-align:center;padding:0 2rem;margin-bottom:1.5rem}
-  .hero-credit strong{font-size:.78rem;letter-spacing:.15em}
-  .hero-title-wrap{margin-bottom:.6rem}
+  .hero-credit{padding:0 1.5rem;margin-bottom:1.2rem}
+  .hero-credit strong{font-size:.65rem;letter-spacing:.12em}
+  .hero-credit{font-size:.62rem}
+  .hero-title-wrap{margin-bottom:.8rem}
   .hero-title-line{flex-direction:column;gap:.1rem;align-items:center}
   .hero-title-word{font-size:clamp(4rem,16vw,7rem);line-height:.9}
-  .hero-subs{flex-direction:column;align-items:center;text-align:center;gap:.9rem;margin-bottom:1.8rem}
-  .hero-sub-right{text-align:center}
-  .hero-waitlist{margin-bottom:5vh}
 
   .story-layout{flex-direction:column}
   .story-images{display:none}
@@ -331,6 +381,9 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .story-step{min-height:auto;padding:0;flex-direction:column}
   .story-step-inner{padding:2.5rem 2rem 1.5rem}
   .story-step-img{display:block;width:100%;height:auto;object-fit:contain;filter:brightness(.85) saturate(.95)}
+  .tsuchikabe{min-height:85vh}
+  .tsuchikabe-content{padding:0 1.5rem clamp(3rem,6vh,5rem)}
+  .tsuchikabe-title{font-size:clamp(2rem,8vw,3rem)}
   .video-interlude{grid-template-columns:1fr}
   .design-inner{grid-template-columns:1fr}
 
@@ -345,6 +398,10 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 
   .furniture-inner{grid-template-columns:1fr}
   .furniture-image{min-height:50vh}
+
+  .made-by{padding:clamp(4rem,8vh,6rem) 1.5rem}
+  .made-by-name{font-size:clamp(1.2rem,5vw,1.6rem)}
+  .made-by-role{font-size:.75rem}
 
   /* Materials — 2-col grid on mobile, no horizontal scroll */
   .materials-header{flex-direction:column;align-items:flex-start;gap:1rem}
@@ -368,9 +425,8 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .footer-links{flex-wrap:wrap;justify-content:center}
 }
 @media(max-width:600px){
-  .hero-credit{font-size:.68rem;margin-bottom:1.2rem}
+  .hero-credit{font-size:.58rem;margin-bottom:1rem}
   .hero-title-wrap{padding:0 1.5rem}
-  .hero-subs{padding:0 1.5rem}
   .hero-waitlist{width:92%;flex-direction:column}
   .hero-waitlist-btn{padding:.8rem}
   .nav{padding:1.2rem 1.25rem}
@@ -434,11 +490,6 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="hero-credit">
-    <strong>Norm Architects &times; Keiji Ashizawa Design</strong>
-    Kyoto, Japan &mdash; December 2026
-  </div>
-
   <div class="hero-title-wrap">
     <div class="hero-title-line">
       <span class="hero-title-word">MAANA</span>
@@ -446,9 +497,8 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     </div>
   </div>
 
-  <div class="hero-subs">
-    <span class="hero-sub">A ground-up sanctuary<br>rooted in tsuchikabe tradition</span>
-    <span class="hero-sub hero-sub-right">Maana's first<br>purpose-built home</span>
+  <div class="hero-credit">
+    Kyoto, Japan &mdash; December 2026
   </div>
 
   <div class="hero-waitlist" id="heroWaitlist">
@@ -460,6 +510,27 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   <div class="hero-scroll"></div>
 </section>
 
+<!-- Hero follow-up form (appears below hero after email signup) -->
+<section class="hero-followup-section" id="heroFollowupSection">
+  <div class="hero-followup" id="heroFollowup">
+    <p class="hero-followup-header">Welcome to the wait.</p>
+    <p class="hero-followup-sub">Help us get to know you a little better.</p>
+    <div class="hero-followup-raffle">
+      <p><strong>Enter to win a complimentary one-night stay.</strong><br>Five guests from the waitlist will be selected for the inaugural season.</p>
+    </div>
+    <label for="heroFollowupIndustry">Your industry <span class="required-star">*</span></label>
+    <input type="text" class="hero-followup-field" id="heroFollowupIndustry" placeholder="e.g. Architecture, Hospitality, Technology&hellip;" required>
+    <label for="heroFollowupNote">Anything you'd like us to know? <span class="required-star">*</span></label>
+    <textarea class="hero-followup-field" id="heroFollowupNote" placeholder="What draws you to the Annex, how you heard about us, or anything at all&hellip;" required></textarea>
+    <button type="button" class="hero-followup-submit" id="heroFollowupSubmitBtn">Enter Raffle</button>
+    <button type="button" class="hero-followup-skip" id="heroFollowupSkipBtn">Skip for now</button>
+  </div>
+  <div class="hero-confirmed" id="heroConfirmed">
+    <p>You're in.</p>
+    <small>We'll be in touch as the walls take shape. Good luck in the raffle.</small>
+  </div>
+</section>
+
 <!-- ═══ STORY — Mersi-style split with CSS sticky ═══ -->
 <section class="story" id="story">
   <div class="story-layout">
@@ -467,22 +538,19 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     <div class="story-images" id="storyImages">
       <img class="story-img active" id="storyImg0" src="images/story-grain.png" alt="Ceramic vase and branch on wooden bench against earthen plaster wall">
       <img class="story-img" id="storyImg1" src="images/story-light.png" alt="Woven lantern catching afternoon light through shoji">
-      <img class="story-img" id="storyImg2" src="images/story-hands.png" alt="Clay vessel resting on aged timber pedestal">
-      <img class="story-img" id="storyImg3" src="images/story-interval.png" alt="Reclaimed wood frame on textured wall above dining table">
-      <span class="story-img-label active" id="storyLabel0">Where tradition meets intention</span>
-      <span class="story-img-label" id="storyLabel1">Light as timekeeper</span>
-      <span class="story-img-label" id="storyLabel2">The memory of making</span>
-      <span class="story-img-label" id="storyLabel3">A room that waits with you</span>
+      <img class="story-img" id="storyImg2" src="images/story-interval.png" alt="Reclaimed wood frame on textured wall above dining table">
+      <span class="story-img-label active" id="storyLabel0">Where it all begins</span>
+      <span class="story-img-label" id="storyLabel1">The memory of making</span>
+      <span class="story-img-label" id="storyLabel2">A return to where it started</span>
     </div>
 
     <div class="story-steps" id="storySteps">
       <div class="story-step" data-step="0">
         <div class="story-step-inner reveal">
           <span class="story-step-num">01</span>
-          <h3 class="story-step-title">The Grain</h3>
-          <p class="story-step-body">The Annex is built where Japanese tradition and contemporary design meet without compromise. Tsuchikabe earth walls sit alongside clean Scandinavian lines. Karimoku joinery shares a room with hinoki timber beams. Nothing here is nostalgic for its own sake — every traditional element earns its place by making the space feel more present, more grounded, more alive.</p>
-          <p class="story-step-detail">Norm Architects and Keiji Ashizawa Design share a belief that restraint is not minimalism — it is knowing which traditions to carry forward and which to leave behind. The Annex is their answer: a house where four centuries of Kyoto craft live quietly inside a modern floor plan.</p>
-          <p class="story-step-jp">伝統と現代の交差 — 新しい日本の住まい</p>
+          <h3 class="story-step-title">The Intention</h3>
+          <p class="story-step-body">Our Annex project is close to our hearts, a space where years of learning, craftsmanship, and connection have gently come together. It marks our very first new build, thoughtfully created using materials carried over from our previous renovation projects, allowing pieces of our journey to live on in a new form. Every texture, object, and corner has been carefully considered with intention, shaped by the experiences we've shared and the insights we've gained from welcoming guests over the years. More than just a place to stay, the Annex is a reflection of the people who have inspired us along the way.</p>
+          <p class="story-step-jp">意図 — 心を込めた新しい始まり</p>
           <div class="story-step-divider"></div>
         </div>
         <img class="story-step-img" src="images/story-grain.png" alt="Ceramic vase and branch on wooden bench against earthen plaster wall" loading="lazy">
@@ -490,10 +558,9 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
       <div class="story-step" data-step="1">
         <div class="story-step-inner reveal">
           <span class="story-step-num">02</span>
-          <h3 class="story-step-title">The Light</h3>
-          <p class="story-step-body">At the Annex, light is not decoration — it is the clock. A central light well tracks the sun's path across interior clay walls, marking morning in warm ochre and afternoon in long, quiet shadows. The house was designed so that you feel the hour without checking it, so that the rhythm of a day in Kyoto writes itself across the rooms you inhabit.</p>
-          <p class="story-step-detail">Every window angle and shoji screen was calibrated during design to shape how light enters and leaves each room. By evening, the walls hold a residual warmth that no artificial source can replicate — a quality the plasterers call "breathing light."</p>
-          <p class="story-step-jp">光は時計 — 一日のリズムを刻む家</p>
+          <h3 class="story-step-title">The Hands</h3>
+          <p class="story-step-body">In a world shaped by mass production and uniform templates, the Annex was created by people, for people, and we wanted that human touch to remain visible. You may notice the gentle arc of a plasterer's trowel left behind on the walls, the quiet chisel marks of the joiner within the timber joints, or even the subtle fingerprint of one of our ceramicists pressed into the glaze. Even the tsuchikabe earthen walls were carefully recycled and recreated by our own Maana team, carrying forward materials and memories from our previous projects into this new home. The Annex is a celebration of process, artistry, and the beauty of natural materials made slowly by human hands.</p>
+          <p class="story-step-jp">手の記憶 — すべての表面に宿る人の証</p>
           <div class="story-step-divider"></div>
         </div>
         <img class="story-step-img" src="images/story-light.png" alt="Woven lantern catching afternoon light through shoji" loading="lazy">
@@ -501,26 +568,29 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
       <div class="story-step" data-step="2">
         <div class="story-step-inner reveal">
           <span class="story-step-num">03</span>
-          <h3 class="story-step-title">The Hands</h3>
-          <p class="story-step-body">Every surface and texture in the Annex carries the memory of the hands that shaped it. The plasterer's trowel arcs are left visible in the walls. The joiner's chisel marks remain in the timber joints. The ceramicist's fingerprints rest in the glaze. In a world of machine-perfect surfaces, the Annex is built by people, for people — and it shows.</p>
-          <p class="story-step-detail">More than a dozen artisans will contribute to the finished house, each bringing a craft tradition passed through generations. No two rooms will bear the same marks. The imperfections are not flaws — they are proof that someone cared enough to be here.</p>
-          <p class="story-step-jp">手の記憶 — すべての表面に宿る人の証</p>
-          <div class="story-step-divider"></div>
-        </div>
-        <img class="story-step-img" src="images/story-hands.png" alt="Clay vessel resting on aged timber pedestal" loading="lazy">
-      </div>
-      <div class="story-step" data-step="3">
-        <div class="story-step-inner reveal">
-          <span class="story-step-num">04</span>
-          <h3 class="story-step-title">The Interval</h3>
-          <p class="story-step-body">The Annex is designed to slow you down. The entrance narrows before it opens. Corridors turn so you cannot see everything at once. A garden appears where you did not expect it. These are not architectural tricks — they are invitations to pause, drawn from the spatial wisdom of the machiya tradition, where every threshold marks a shift in atmosphere and attention.</p>
-          <p class="story-step-detail">The Japanese concept of ma — the meaningful void between things — is the Annex's hidden architect. Rooms are shaped not only by what fills them, but by the silence and stillness they protect.</p>
-          <p class="story-step-jp">間 — 余白が導く静寂の建築</p>
+          <h3 class="story-step-title">Full Circle</h3>
+          <p class="story-step-body">Together with everything we have learned from the ways our guests live, rest, gather, we hoped to create a home; one that feels lived in. A place where guests can arrive and exhale. Situated beside the very first machiya that began the Maana journey, the Annex feels like a quiet full-circle moment; a return to where it all started, while also looking toward what is still to come. For Maana, the Annex is more than a place to stay. It is a continuation of our story, woven together through memory, material, and the people who have walked alongside us over the years. And in welcoming guests here, it feels as though we are opening the door not simply to a stay, but to a homecoming.</p>
+          <p class="story-step-jp">円環 — 始まりの場所に帰る</p>
           <div class="story-step-divider"></div>
         </div>
         <img class="story-step-img" src="images/story-interval.png" alt="Reclaimed wood frame on textured wall above dining table" loading="lazy">
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ TSUCHIKABE — recycled earth walls ═══ -->
+<section class="tsuchikabe">
+  <div class="tsuchikabe-img">
+    <img src="images/tsuchikabe-recycle.png" alt="Hands pressing recycled earth from Maana's previous renovations">
+  </div>
+  <div class="tsuchikabe-gradient"></div>
+  <div class="tsuchikabe-content reveal">
+    <p class="tsuchikabe-overline">Tsuchikabe &mdash; 土壁</p>
+    <h2 class="tsuchikabe-title">The walls remember.</h2>
+    <p class="tsuchikabe-body">When we renovated our first machiya, we carefully saved the earth from its original tsuchikabe walls — clay mixed generations ago, carrying the memory of the house it once held together. That same earth now lives inside the Annex. Layer by layer, our team has worked it back into new walls by hand, blending it with fresh clay and straw in the way it has always been done.</p>
+    <p class="tsuchikabe-body">Nothing here is new for the sake of being new. The Annex is a new building made from old material, shaped by the same hands that took it apart and put it back together. Seven coats applied over months, each one drying slowly in the Kyoto air. The walls breathe. They hold warmth. And they carry forward a story that started long before this house was drawn.</p>
+    <p class="tsuchikabe-jp">古い土が新しい壁になる</p>
   </div>
 </section>
 
@@ -540,30 +610,11 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   </div>
 </section>
 
-<!-- ═══ THE DESIGN ═══ -->
-<section class="design" id="design">
-  <div class="design-bg-overlay"></div>
-  <div class="design-inner">
-    <div class="design-text reveal">
-      <div class="design-ghost">The<br>Design</div>
-      <h2 class="design-headline">Built from the ground up around light, material, and the rhythm of a day.</h2>
-      <p class="design-body">Unlike Maana's restored machiya, the Annex was designed from scratch — every angle, every window, every wall thickness is intentional. The floor plan is organized around a central light well that tracks the sun's path across interior clay walls. It is a challenge to the modern pre-fabricated housing archetype in Japan: proof that new construction can still honor the spatial wisdom of the machiya tradition.</p>
-    </div>
-    <div class="design-image float-up">
-      <div class="design-image-bg" style="background-image:url('images/floorplan.png')"></div>
-      <span class="design-image-caption">Layout Learnings &mdash; 1F &amp; 2F</span>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ VISION QUOTE ═══ -->
-<div class="vision-wrap">
-  <video autoplay muted loop playsinline aria-hidden="true">
-    <source src="videos/lattice.mp4" type="video/mp4">
-  </video>
+<div class="vision-wrap vision-light">
   <div class="vision-inner reveal">
-    <p class="vision-text">"The best architecture isn't seen. It's felt in the way light enters a room at four in the afternoon."</p>
-    <p class="vision-cite">Jonas Bjerre-Poulsen, Norm Architects</p>
+    <p class="vision-text">"The concept of 'Layering of time' reflects on Kyoto's rich history, encompassing many layers found in its architecture, craftsmanship, materials and colors. It embodies our wise to create contemporary architecture deeply rooted in Japanese culture."</p>
+    <p class="vision-cite">Norm Architects</p>
   </div>
 </div>
 
@@ -601,16 +652,52 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 <section class="furniture" id="furniture">
   <div class="furniture-inner">
     <div class="furniture-image float-up">
-      <img src="images/karimoku case.jpg" alt="Karimoku Case Study furniture collection">
+      <img src="images/karimoku-maana.png" alt="Karimoku Case Study furniture collection">
     </div>
     <div class="furniture-text">
       <div class="furniture-text-inner reveal">
         <p class="furniture-overline">Karimoku Case Study &times; Norm Architects</p>
-        <h2 class="furniture-title">Furniture<br>as architecture.</h2>
-        <p class="furniture-body">Every piece of furniture in the Annex is drawn from the Karimoku Case Study collection — a collaboration between Norm Architects and Karimoku, Japan's foremost wood furniture manufacturer. Rather than decorating the space after the fact, the furniture was conceived alongside the architecture: same designers, same material philosophy, same reverence for wood grain and honest joinery.</p>
-        <p class="furniture-body">Founded in Aichi in 1940, Karimoku brings three generations of woodworking mastery to the partnership. Norm brings their characteristic restraint. The result is a collection where every chair, table, and shelf feels inevitable rather than designed — furniture that exists in quiet conversation with the clay walls and hinoki beams surrounding it.</p>
-        <p class="furniture-detail">Select pieces from the collaboration will be produced exclusively for the Annex — furniture shaped by the same light and proportions it will inhabit.</p>
-        <p class="furniture-jp">家具は建築の延長 — カリモクケーススタディ</p>
+        <h2 class="furniture-title">Karimoku Case Study<br>&times; Maana</h2>
+        <p class="furniture-body">Designed through the collaboration between Norm Architects and Karimoku, each piece carries the same quiet warmth and material honesty as the home itself. Same designers, same material philosophy, same conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MADE BY / COLLABORATORS ═══ -->
+<section class="made-by" id="collaborators">
+  <div class="made-by-inner">
+    <p class="made-by-caption reveal">Made By</p>
+    <div class="made-by-list">
+      <div class="made-by-item reveal">
+        <span class="made-by-name">Norm &amp; Keiji</span>
+        <span class="made-by-dot">&middot;</span>
+        <span class="made-by-role">Architecture</span>
+      </div>
+      <div class="made-by-item reveal reveal-d1">
+        <span class="made-by-name">Karimoku</span>
+        <span class="made-by-dot">&middot;</span>
+        <span class="made-by-role">Furniture</span>
+      </div>
+      <div class="made-by-item reveal reveal-d2">
+        <span class="made-by-name">Hatano Wataru</span>
+        <span class="made-by-dot">&middot;</span>
+        <span class="made-by-role">Furniture &amp; Art</span>
+      </div>
+      <div class="made-by-item reveal reveal-d3">
+        <span class="made-by-name">Miura Shomei</span>
+        <span class="made-by-dot">&middot;</span>
+        <span class="made-by-role">Lighting</span>
+      </div>
+      <div class="made-by-item reveal">
+        <span class="made-by-name">Kubota Birendo</span>
+        <span class="made-by-dot">&middot;</span>
+        <span class="made-by-role">Sudare</span>
+      </div>
+      <div class="made-by-item reveal reveal-d1">
+        <span class="made-by-name">Hiraishi Tomohisa</span>
+        <span class="made-by-dot">&middot;</span>
+        <span class="made-by-role">Sakan</span>
       </div>
     </div>
   </div>
@@ -680,26 +767,22 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-season">Spring 2026</p>
-      <p class="timeline-label">Foundations &amp; framing</p>
-      <p class="timeline-detail">Structural timber rising in Higashiyama</p>
+      <p class="timeline-label">Foundations</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-season">Summer 2026</p>
-      <p class="timeline-label">Tsuchikabe begins</p>
-      <p class="timeline-detail">Seven coats of clay, applied over months</p>
+      <p class="timeline-label">Tsuchikabe</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-season">Autumn 2026</p>
-      <p class="timeline-label">Interior &amp; garden</p>
-      <p class="timeline-detail">Karimoku furniture installed, garden planted</p>
+      <p class="timeline-label">Interior</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-season">Winter 2026</p>
-      <p class="timeline-label">First guests arrive</p>
-      <p class="timeline-detail">The Annex opens its doors</p>
+      <p class="timeline-label">Doors open</p>
     </div>
   </div>
 </section>
@@ -728,15 +811,15 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     <!-- Step 2: Follow-up form (slides in after email) -->
     <div class="waitlist-followup" id="waitlistFollowup">
       <p class="waitlist-followup-header">Welcome to the wait.</p>
-      <p class="waitlist-followup-sub">Help us get to know you a little better &mdash; entirely optional.</p>
+      <p class="waitlist-followup-sub">Help us get to know you a little better.</p>
       <div class="waitlist-followup-raffle">
-        <p><strong>Enter to win a complimentary one-night stay.</strong><br>Ten guests from the waitlist will be selected for the inaugural season.</p>
+        <p><strong>Enter to win a complimentary one-night stay.</strong><br>Five guests from the waitlist will be selected for the inaugural season.</p>
       </div>
-      <label for="followupIndustry">Your industry</label>
-      <input type="text" class="waitlist-followup-field" id="followupIndustry" placeholder="e.g. Architecture, Hospitality, Technology&hellip;">
-      <label for="followupNote">Anything you'd like us to know?</label>
-      <textarea class="waitlist-followup-field" id="followupNote" placeholder="What draws you to the Annex, how you heard about us, or anything at all&hellip;"></textarea>
-      <button type="button" class="waitlist-followup-submit" id="followupSubmitBtn">Submit</button>
+      <label for="followupIndustry">Your industry <span class="required-star">*</span></label>
+      <input type="text" class="waitlist-followup-field" id="followupIndustry" placeholder="e.g. Architecture, Hospitality, Technology&hellip;" required>
+      <label for="followupNote">Anything you'd like us to know? <span class="required-star">*</span></label>
+      <textarea class="waitlist-followup-field" id="followupNote" placeholder="What draws you to the Annex, how you heard about us, or anything at all&hellip;" required></textarea>
+      <button type="button" class="waitlist-followup-submit" id="followupSubmitBtn">Enter Raffle</button>
       <button type="button" class="waitlist-followup-skip" id="followupSkipBtn">Skip for now</button>
     </div>
 
@@ -799,14 +882,12 @@ const storySteps=document.querySelectorAll('.story-step');
 const storyImgs=[
   document.getElementById('storyImg0'),
   document.getElementById('storyImg1'),
-  document.getElementById('storyImg2'),
-  document.getElementById('storyImg3')
+  document.getElementById('storyImg2')
 ];
 const storyLabels=[
   document.getElementById('storyLabel0'),
   document.getElementById('storyLabel1'),
-  document.getElementById('storyLabel2'),
-  document.getElementById('storyLabel3')
+  document.getElementById('storyLabel2')
 ];
 let activeStoryIdx=0;
 
@@ -917,9 +998,12 @@ function handleWaitlist(emailEl,formEl,successEl,wrapEl){
   const c=document.getElementById('counterNum');
   if(c)c.textContent=parseInt(c.textContent||0)+1;
 
-  // Hero form: simple success
+  // Hero form: show follow-up section below hero
   if(wrapEl){
     wrapEl.classList.add('success');
+    const section=document.getElementById('heroFollowupSection');
+    section.classList.add('active');
+    section.scrollIntoView({behavior:'smooth',block:'start'});
     return;
   }
   // Bottom form: slide to follow-up
@@ -936,23 +1020,59 @@ function showFinalConfirmation(){
   document.getElementById('waitlistConfirmed').classList.add('active');
 }
 
+// Validate required fields — returns true if all filled
+function validateFields(fields){
+  let valid=true;
+  fields.forEach(f=>{
+    f.classList.remove('field-error');
+    if(!f.value.trim()){f.classList.add('field-error');valid=false}
+  });
+  return valid;
+}
+
 const followupSubmitBtn=document.getElementById('followupSubmitBtn');
 if(followupSubmitBtn){
   followupSubmitBtn.addEventListener('click',()=>{
-    const industry=document.getElementById('followupIndustry').value.trim();
-    const note=document.getElementById('followupNote').value.trim();
-    if(industry||note){
-      fetch('https://formspree.io/f/YOUR_FORM_ID',{
-        method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email:waitlistUserEmail,industry,note,_subject:'Maana Annex Waitlist — Details'})
-      }).catch(()=>{});
-    }
+    const indField=document.getElementById('followupIndustry');
+    const noteField=document.getElementById('followupNote');
+    if(!validateFields([indField,noteField]))return;
+    const industry=indField.value.trim();
+    const note=noteField.value.trim();
+    fetch('https://formspree.io/f/YOUR_FORM_ID',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:waitlistUserEmail,industry,note,_subject:'Maana Annex Waitlist — Details'})
+    }).catch(()=>{});
     showFinalConfirmation();
   });
 }
 const followupSkipBtn=document.getElementById('followupSkipBtn');
 if(followupSkipBtn){
   followupSkipBtn.addEventListener('click',showFinalConfirmation);
+}
+
+// Hero follow-up submit/skip
+function showHeroConfirmation(){
+  document.getElementById('heroFollowup').classList.add('hidden');
+  document.getElementById('heroConfirmed').classList.add('active');
+}
+const heroFollowupSubmitBtn=document.getElementById('heroFollowupSubmitBtn');
+if(heroFollowupSubmitBtn){
+  heroFollowupSubmitBtn.addEventListener('click',()=>{
+    const indField=document.getElementById('heroFollowupIndustry');
+    const noteField=document.getElementById('heroFollowupNote');
+    if(!validateFields([indField,noteField]))return;
+    const industry=indField.value.trim();
+    const note=noteField.value.trim();
+    fetch('https://formspree.io/f/YOUR_FORM_ID',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:waitlistUserEmail,industry,note,_subject:'Maana Annex Waitlist — Hero Details'})
+    }).catch(()=>{});
+    showHeroConfirmation();
+  });
+}
+const heroFollowupSkipBtn=document.getElementById('heroFollowupSkipBtn');
+if(heroFollowupSkipBtn){
+  heroFollowupSkipBtn.addEventListener('click',showHeroConfirmation);
 }
 
 // Hero waitlist

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maana — A Home in Kyoto, Rooted in Craft</title>
+<meta name="description" content="Maana offers stays, cultural experiences, and a retail atelier in Kyoto's Higashiyama district. Three restored machiya homes, a new-build annex, and hands-on encounters with Japanese craft traditions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+/* ═══ TOKENS (shared with Annex) ═══ */
+:root{
+  --bg:#F5F0EB;--bg-deep:#1A1714;--bg-warm:#E8E0D6;
+  --text:#1A1714;--text-light:#F5F0EB;--text-muted:#9A8E82;--text-sec:#6B6158;
+  --earth:#8B7355;
+  --serif:'Cormorant Garamond','Noto Serif JP',serif;
+  --sans:'Montserrat',sans-serif;
+  --jp:'Noto Serif JP',serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth;overflow-x:clip}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.7}
+::selection{background:var(--earth);color:var(--text-light)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:var(--sans)}
+
+/* ═══ SCROLL REVEAL ═══ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.15s}
+.reveal-d2{transition-delay:.3s}
+.float-up{opacity:0;transform:translateY(80px);transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+.float-up.vis{opacity:1;transform:translateY(0)}
+.float-up-d1{transition-delay:.2s}
+
+/* ═══ NAVIGATION ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.8rem 3rem;transition:all .4s ease}
+.nav.scrolled{background:rgba(26,23,20,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:1rem 3rem}
+.nav-logo{font-family:var(--sans);font-weight:500;font-size:.75rem;letter-spacing:.35em;color:var(--text-light);text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.nav-links{display:flex;align-items:center;gap:2.2rem}
+.nav-link{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.6);transition:color .3s;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+.nav-link:hover{color:var(--text-light)}
+.nav-cta{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);padding:.65rem 1.8rem;border:1px solid rgba(245,240,235,.35);background:transparent;transition:all .3s}
+.nav-cta:hover{background:var(--text-light);color:var(--bg-deep);border-color:var(--text-light)}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;height:100vh;min-height:650px;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;background:var(--bg-deep)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#2A2520;transform:scale(1.06);animation:heroZoom 20s ease forwards}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,.3) 0%,rgba(26,23,20,.15) 35%,rgba(26,23,20,.25) 65%,rgba(26,23,20,.7) 100%);z-index:1}
+@keyframes heroZoom{to{transform:scale(1)}}
+
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 2rem;max-width:800px}
+.hero-brand{font-family:var(--serif);font-weight:300;font-size:clamp(3.5rem,9vw,7rem);line-height:.88;color:var(--text-light);text-shadow:0 4px 40px rgba(0,0,0,.4);letter-spacing:.08em;margin-bottom:2rem}
+.hero-tagline{font-family:var(--sans);font-weight:300;font-size:clamp(.8rem,1.2vw,1rem);letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.7);text-shadow:0 2px 12px rgba(0,0,0,.4);line-height:1.8}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;width:1px;height:30px;background:rgba(245,240,235,.1);overflow:hidden}
+.hero-scroll::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:rgba(245,240,235,.5);animation:scrollDown 2s ease infinite}
+@keyframes scrollDown{to{top:100%}}
+
+/* ═══ INTRO ═══ */
+.intro{padding:clamp(5rem,10vh,10rem) 3rem;text-align:center;background:var(--bg)}
+.intro-inner{max-width:680px;margin:0 auto}
+.intro-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem}
+.intro-headline{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.25;color:var(--text);margin-bottom:1.5rem}
+.intro-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:var(--text-sec)}
+
+/* ═══ PILLARS (Stay + Experiences) ═══ */
+.pillars{padding:0 3rem clamp(5rem,10vh,10rem);background:var(--bg)}
+.pillars-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.pillar-card{position:relative;overflow:hidden;cursor:pointer}
+.pillar-card-img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 1.2s var(--ease);filter:brightness(.88)}
+.pillar-card:hover .pillar-card-img{transform:scale(1.04)}
+.pillar-card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,23,20,.7) 0%,rgba(26,23,20,.1) 40%,transparent 100%);z-index:1}
+.pillar-card-content{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:2.5rem}
+.pillar-card-label{font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,235,.5);margin-bottom:.6rem}
+.pillar-card-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.2rem);color:var(--text-light);line-height:1.1;margin-bottom:.8rem}
+.pillar-card-body{font-family:var(--sans);font-weight:300;font-size:.78rem;color:rgba(245,240,235,.6);max-width:320px;line-height:1.7;margin-bottom:1.2rem}
+.pillar-card-link{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);border-bottom:1px solid rgba(245,240,235,.3);padding-bottom:2px;transition:border-color .3s}
+.pillar-card-link:hover{border-color:var(--text-light)}
+
+/* Stay sub-items */
+.pillar-card-subs{display:flex;gap:1.5rem;margin-top:1.2rem}
+.pillar-sub{font-family:var(--sans);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.45);transition:color .3s}
+.pillar-sub:hover{color:var(--text-light)}
+.pillar-sub-tag{font-size:.45rem;color:var(--earth);margin-left:.3rem;font-style:italic;letter-spacing:.08em;text-transform:none}
+
+/* ═══ ANNEX ANNOUNCEMENT ═══ */
+.annex-announce{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;background:var(--bg-deep)}
+.annex-announce-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.35;pointer-events:none;filter:brightness(.6)}
+.annex-announce-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:clamp(4rem,8vh,8rem) 3rem;align-items:center}
+.annex-text{max-width:480px}
+.annex-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(245,240,235,.4);margin-bottom:1.5rem}
+.annex-title{font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.1;color:var(--text-light);margin-bottom:1.5rem}
+.annex-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:rgba(245,240,235,.6);margin-bottom:2rem}
+.annex-cta{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bg-deep);background:rgba(245,240,235,.92);padding:.9rem 2.2rem;transition:all .3s;border:none}
+.annex-cta:hover{background:var(--text-light);transform:translateY(-2px)}
+.annex-images{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.annex-img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.9)}
+
+/* ═══ PRESS ═══ */
+.press{padding:clamp(4rem,8vh,7rem) 3rem;background:var(--bg)}
+.press-inner{max-width:1000px;margin:0 auto;text-align:center}
+.press-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2.5rem}
+.press-logos{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2.5rem 3rem}
+.press-logo{height:18px;opacity:.35;filter:grayscale(1);transition:opacity .3s,filter .3s}
+.press-logo:hover{opacity:.7;filter:grayscale(0)}
+
+/* ═══ NEWSLETTER ═══ */
+.newsletter{padding:clamp(5rem,10vh,10rem) 3rem;background:var(--bg-deep);text-align:center;position:relative}
+.newsletter-inner{position:relative;z-index:2;max-width:520px;margin:0 auto}
+.newsletter-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(245,240,235,.4);margin-bottom:1.5rem}
+.newsletter-headline{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.2;color:var(--text-light);margin-bottom:1rem}
+.newsletter-body{font-family:var(--sans);font-weight:300;font-size:.82rem;color:rgba(245,240,235,.55);margin-bottom:2.5rem;line-height:1.7}
+.newsletter-form{display:flex;border:1.5px solid rgba(245,240,235,.3);transition:border-color .3s}
+.newsletter-form:focus-within{border-color:rgba(245,240,235,.6)}
+.newsletter-input{flex:1;padding:1rem 1.4rem;background:transparent;border:none;outline:none;font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--text-light)}
+.newsletter-input::placeholder{color:rgba(245,240,235,.4);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+.newsletter-btn{padding:1rem 2rem;background:rgba(245,240,235,.92);border:none;font-family:var(--sans);font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bg-deep);transition:all .3s;white-space:nowrap}
+.newsletter-btn:hover{background:var(--text-light)}
+
+/* ═══ FOOTER ═══ */
+.footer{padding:3rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg-deep);border-top:1px solid rgba(245,240,235,.04)}
+.footer-logo{font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.3em;color:var(--text-light)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.3);transition:color .3s}
+.footer-links a:hover{color:var(--text-light)}
+.footer-copy{font-size:.6rem;color:rgba(245,240,235,.2)}
+
+/* ═══ SCROLL PROGRESS ═══ */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--earth);z-index:200;width:0;opacity:.6;transition:width .1s linear}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:968px){
+  .nav-links{display:none}
+  .pillars-grid{grid-template-columns:1fr}
+  .pillar-card-img{aspect-ratio:4/3}
+  .annex-announce-inner{grid-template-columns:1fr;text-align:center}
+  .annex-text{max-width:100%;margin:0 auto}
+  .annex-images{max-width:500px;margin:0 auto}
+  .annex-cta{display:block;text-align:center}
+  .footer{flex-direction:column;gap:1.5rem;text-align:center}
+  .footer-links{flex-wrap:wrap;justify-content:center}
+}
+@media(max-width:600px){
+  .nav{padding:1.2rem 1.5rem}
+  .intro{padding:3rem 1.5rem}
+  .pillars{padding:0 1.5rem 3rem}
+  .pillar-card-content{padding:1.5rem}
+  .pillar-card-subs{flex-wrap:wrap;gap:.8rem}
+  .annex-announce-inner{padding:3rem 1.5rem;gap:2rem}
+  .press{padding:3rem 1.5rem}
+  .newsletter{padding:3rem 1.5rem}
+  .newsletter-form{flex-direction:column}
+  .newsletter-btn{padding:.9rem}
+  .footer{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">M A A N A</a>
+  <div class="nav-links">
+    <a href="#stay" class="nav-link">Stay</a>
+    <a href="#experiences" class="nav-link">Experiences</a>
+    <a href="https://maanahomes.com/shop" class="nav-link" target="_blank" rel="noopener">Living</a>
+    <a href="https://maanahomes.com/about" class="nav-link" target="_blank" rel="noopener">Our Story</a>
+    <button class="nav-cta" onclick="window.open('https://maanahomes.com/contact','_blank')">Book Now</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-bg" style="background-image:url('Home_files/001.webp')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-brand">MAANA</h1>
+    <p class="hero-tagline">A home in Kyoto, rooted in craft</p>
+  </div>
+  <div class="hero-scroll"></div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<section class="intro">
+  <div class="intro-inner reveal">
+    <p class="intro-caption">Higashiyama, Kyoto</p>
+    <h2 class="intro-headline">Where staying becomes<br>an act of attention.</h2>
+    <p class="intro-body">Maana is a collection of restored machiya homes, cultural experiences, and a retail atelier in Kyoto's Higashiyama district. Every stay is a private encounter with Japanese craft — earthen walls, hinoki baths, ceramics chosen by hand. Not a hotel. A home that teaches you to slow down.</p>
+  </div>
+</section>
+
+<!-- ═══ PILLARS ═══ -->
+<section class="pillars">
+  <div class="pillars-grid">
+
+    <!-- STAY -->
+    <div class="pillar-card float-up" id="stay">
+      <img class="pillar-card-img" src="Home_files/kiyo-feature-001.jpg" alt="Maana Kiyomizu interior — earthen plaster and morning light">
+      <div class="pillar-card-overlay"></div>
+      <div class="pillar-card-content">
+        <p class="pillar-card-label">Private Homes &amp; Residences</p>
+        <h2 class="pillar-card-title">Stay</h2>
+        <p class="pillar-card-body">Three restored machiya in Higashiyama, a new-build annex opening this winter, and a boutique hotel on the horizon. Each one shaped by the same reverence for craft, light, and quiet.</p>
+        <div class="pillar-card-subs">
+          <a href="https://maanahomes.com" class="pillar-sub">Homes</a>
+          <a href="index.html" class="pillar-sub">Annex <span class="pillar-sub-tag">Dec 2026</span></a>
+          <span class="pillar-sub">Hotel <span class="pillar-sub-tag">2028</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCES -->
+    <div class="pillar-card float-up float-up-d1" id="experiences">
+      <img class="pillar-card-img" src="Home_files/showcase-tea-ceremony-morning.jpg" alt="Morning tea ceremony experience at Maana">
+      <div class="pillar-card-overlay"></div>
+      <div class="pillar-card-content">
+        <p class="pillar-card-label">Hands-On Craft Encounters</p>
+        <h2 class="pillar-card-title">Experiences</h2>
+        <p class="pillar-card-body">Tea ceremonies, botanical dyeing, earthen wall plastering, koji fermentation. Each experience is led by a local artisan and offered exclusively to Maana guests.</p>
+        <a href="https://maanahomes.com/experiences" class="pillar-card-link" target="_blank" rel="noopener">Explore experiences &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ANNEX ANNOUNCEMENT ═══ -->
+<section class="annex-announce">
+  <div class="annex-announce-bg" style="background-image:url('images/hero.jpeg')"></div>
+  <div class="annex-announce-inner">
+    <div class="annex-text reveal">
+      <p class="annex-caption">Opening December 2026</p>
+      <h2 class="annex-title">Maana Annex</h2>
+      <p class="annex-body">Our first purpose-built home. Designed by Norm Architects and Keiji Ashizawa Design, the Annex is a ground-up sanctuary rooted in tsuchikabe tradition — seven coats of Kyoto clay, Karimoku furniture, and a floor plan that follows the sun.</p>
+      <a href="index.html" class="annex-cta">Join the Waitlist</a>
+    </div>
+    <div class="annex-images float-up">
+      <img class="annex-img" src="images/story-grain.png" alt="Maana Annex — ceramic vase on wooden bench" loading="lazy">
+      <img class="annex-img" src="images/story-light.png" alt="Maana Annex — afternoon light through shoji" loading="lazy">
+      <img class="annex-img" src="images/story-hands.png" alt="Maana Annex — clay vessel on timber pedestal" loading="lazy">
+      <img class="annex-img" src="images/story-interval.png" alt="Maana Annex — reclaimed wood on textured wall" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRESS ═══ -->
+<section class="press">
+  <div class="press-inner reveal">
+    <p class="press-caption">Featured In</p>
+    <div class="press-logos">
+      <img class="press-logo" src="Home_files/conde-nast.webp" alt="Condé Nast Traveler">
+      <img class="press-logo" src="Home_files/monocle.webp" alt="Monocle">
+      <img class="press-logo" src="Home_files/arch-digest.webp" alt="Architectural Digest">
+      <img class="press-logo" src="Home_files/t-mag.webp" alt="T Magazine">
+      <img class="press-logo" src="Home_files/travel-leisure.webp" alt="Travel + Leisure">
+      <img class="press-logo" src="Home_files/brutus.webp" alt="Casa Brutus">
+      <img class="press-logo" src="Home_files/vogue.webp" alt="Vogue">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ═══ -->
+<section class="newsletter">
+  <div class="newsletter-inner reveal">
+    <p class="newsletter-caption">Seasonal Newsletter</p>
+    <h2 class="newsletter-headline">Kyoto's road<br>less traveled.</h2>
+    <p class="newsletter-body">Craft stories, seasonal recommendations, and quiet observations from Higashiyama. A few times a year, never more.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="Your email address" autocomplete="email">
+      <button class="newsletter-btn">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <a href="/" class="footer-logo">M A A N A</a>
+  <div class="footer-links">
+    <a href="https://maanahomes.com" target="_blank" rel="noopener">Homes</a>
+    <a href="index.html">Annex</a>
+    <a href="https://maanahomes.com/experiences" target="_blank" rel="noopener">Experiences</a>
+    <a href="https://maanahomes.com/shop" target="_blank" rel="noopener">Living</a>
+    <a href="https://www.instagram.com/maana.homes/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://maanahomes.com/press" target="_blank" rel="noopener">Press</a>
+    <a href="https://maanahomes.com/contact" target="_blank" rel="noopener">Contact</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Maana Japan KK</p>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+(function(){
+'use strict';
+
+// Scroll progress + nav
+const prog=document.getElementById('scrollProgress');
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(!ticking){requestAnimationFrame(()=>{
+    const st=window.pageYOffset;
+    const dh=document.documentElement.scrollHeight-window.innerHeight;
+    if(dh>0)prog.style.width=(st/dh*100)+'%';
+    document.getElementById('nav').classList.toggle('scrolled',st>80);
+    ticking=false;
+  });ticking=true}
+},{passive:true});
+
+// Scroll reveal
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');revealObs.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.float-up').forEach(el=>revealObs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',e=>{
+    const href=anchor.getAttribute('href');
+    if(href==='#')return;
+    e.preventDefault();
+    const target=document.getElementById(href.substring(1));
+    if(target){
+      const top=target.getBoundingClientRect().top+window.pageYOffset-60;
+      window.scrollTo({top,behavior:'smooth'});
+    }
+  });
+});
+
+})();
+</script>
+</body>
+</html>
