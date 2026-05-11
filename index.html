@@ -332,6 +332,15 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 .waitlist-counter-num{font-family:var(--serif);font-size:1.6rem;color:var(--text-light);font-weight:300}
 .waitlist-privacy{font-size:.6rem;color:rgba(245,240,235,.35);margin-top:1.5rem;letter-spacing:.1em}
 
+/* ═══ CURRENT PROJECTS ═══ */
+.projects{padding:clamp(5rem,10vh,8rem) 3rem;background:var(--bg);text-align:center}
+.projects-caption{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:clamp(2rem,4vh,3rem)}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;max-width:1200px;margin:0 auto 3rem}
+.projects-img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.95);transition:filter .4s,transform .6s var(--ease)}
+.projects-img:hover{filter:brightness(1);transform:scale(1.02)}
+.projects-cta{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text);padding:.9rem 2.2rem;border:1.5px solid rgba(26,23,20,.25);transition:all .3s}
+.projects-cta:hover{background:var(--bg-deep);color:var(--text-light);border-color:var(--bg-deep)}
+
 /* ═══ FOOTER ═══ */
 .footer{padding:3rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg-deep);border-top:1px solid rgba(245,240,235,.04)}
 .footer-logo{font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.3em;color:var(--text-light)}
@@ -421,6 +430,8 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .timeline-label{font-size:.78rem;line-height:1.25}
   .timeline-detail{display:none}
 
+  .projects{padding:3rem 1.5rem}
+  .projects-grid{gap:.75rem}
   .footer{flex-direction:column;gap:1.5rem;text-align:center}
   .footer-links{flex-wrap:wrap;justify-content:center}
 }
@@ -459,9 +470,9 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   <a href="https://maanahomes.com" class="nav-logo" target="_blank" rel="noopener">M A A N A <span>A N N E X</span></a>
   <div class="nav-links">
     <a href="#story" class="nav-link">Story</a>
-    <a href="#architects" class="nav-link">Architects</a>
-    <a href="#furniture" class="nav-link">Furniture</a>
-    <a href="#materials" class="nav-link">Materials</a>
+    <a href="#tsuchikabe" class="nav-link">Tsuchikabe</a>
+    <a href="#architects" class="nav-link">Collaborations</a>
+    <a href="https://maanahomes.com" class="nav-link" target="_blank" rel="noopener">Maana Homes</a>
     <button class="nav-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
   </div>
   <div class="nav-mobile-right">
@@ -476,10 +487,10 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 <div class="nav-menu-overlay" id="navMenuOverlay" aria-hidden="true">
   <div class="nav-menu-inner">
     <a href="#story" class="nav-menu-link">Story</a>
-    <a href="#architects" class="nav-menu-link">Architects</a>
-    <a href="#furniture" class="nav-menu-link">Furniture</a>
-    <a href="#materials" class="nav-menu-link">Materials</a>
+    <a href="#tsuchikabe" class="nav-menu-link">Tsuchikabe</a>
+    <a href="#architects" class="nav-menu-link">Collaborations</a>
     <a href="#timeline" class="nav-menu-link">Journey</a>
+    <a href="https://maanahomes.com" class="nav-menu-link" target="_blank" rel="noopener">Maana Homes</a>
     <button class="nav-menu-cta" id="navMenuCta">Join Waitlist</button>
     <p class="nav-menu-jp">眞名 別館</p>
   </div>
@@ -580,7 +591,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 </section>
 
 <!-- ═══ TSUCHIKABE — recycled earth walls ═══ -->
-<section class="tsuchikabe">
+<section class="tsuchikabe" id="tsuchikabe">
   <div class="tsuchikabe-img">
     <img src="images/tsuchikabe-recycle.png" alt="Hands pressing recycled earth from Maana's previous renovations">
   </div>
@@ -790,6 +801,26 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     </div>
     <p class="waitlist-privacy">We respect your quiet. No spam, ever.</p>
   </div>
+</section>
+
+<!-- ═══ CURRENT PROJECTS ═══ -->
+<section class="projects reveal">
+  <p class="projects-caption">Our Current Properties</p>
+  <div class="projects-grid">
+    <div class="projects-card float-up">
+      <img class="projects-img" src="images/kyoto-feature-001.avif" alt="Maana Kyoto" loading="lazy">
+      <p class="projects-label">Maana Kyoto</p>
+    </div>
+    <div class="projects-card float-up float-up-d1">
+      <img class="projects-img" src="images/kiyo-feature-001.avif" alt="Maana Kiyomizu" loading="lazy">
+      <p class="projects-label">Maana Kiyomizu</p>
+    </div>
+    <div class="projects-card float-up float-up-d2">
+      <img class="projects-img" src="images/kamo-feature-001.avif" alt="Maana Kamo" loading="lazy">
+      <p class="projects-label">Maana Kamo</p>
+    </div>
+  </div>
+  <a href="https://maanahomes.com" class="projects-cta" target="_blank" rel="noopener">See our current projects</a>
 </section>
 
 <!-- FOOTER -->
