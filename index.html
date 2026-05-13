@@ -219,29 +219,30 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .architect-card-body{font-family:var(--sans);font-weight:300;font-size:.85rem;line-height:1.8;color:rgba(245,240,235,.5);max-width:420px}
 
 /* ═══ KARIMOKU / FURNITURE ═══ */
-.furniture{position:relative;background:var(--bg);overflow:hidden}
-.furniture-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
-.furniture-image{position:relative;overflow:hidden}
-.furniture-image img{width:100%;height:100%;object-fit:cover}
+.furniture{position:relative;background:var(--bg-deep);overflow:hidden;min-height:100vh}
+.furniture-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.furniture-bg img{width:100%;height:100%;object-fit:cover;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:center center}
+.furniture-darken{position:absolute;inset:0;z-index:1;background:#2C2520;opacity:0;will-change:opacity}
+.furniture::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(0deg,#2C2520 0%,transparent 100%);z-index:2;pointer-events:none}
+.furniture-inner{position:relative;z-index:3;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;align-items:center}
+.furniture-image{display:none}
 .furniture-text{display:flex;align-items:center;padding:clamp(3rem,6vw,6rem)}
 .furniture-text-inner{max-width:460px}
 .furniture-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem}
-.furniture-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--text);margin-bottom:1.5rem}
-.furniture-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:var(--text-sec);margin-bottom:1.5rem}
+.furniture-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--text-light);margin-bottom:1.5rem}
+.furniture-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:rgba(245,240,235,.7);margin-bottom:1.5rem}
 
 /* ═══ SKETCHES / PROCESS ═══ */
-.sketches{position:relative;background:var(--bg-deep);padding:clamp(5rem,10vh,9rem) 0;overflow:hidden}
-.sketches-inner{max-width:1400px;margin:0 auto;padding:0 2rem}
+.sketches{position:relative;background:#2C2520;padding:clamp(5rem,10vh,9rem) 0;overflow:hidden}
+.sketches-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 2rem}
 .sketches-header{text-align:center;margin-bottom:clamp(3rem,6vh,5rem)}
 .sketches-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,240,235,.3);margin-bottom:1rem}
 .sketches-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.15;color:var(--text-light)}
 
 /* Scattered field — tall container, absolutely placed children */
 .sketches-field{position:relative;width:100%;height:160vh;min-height:1100px}
-.sketch-cell{position:absolute;overflow:hidden;background:rgba(245,240,235,.035);border:1px solid rgba(245,240,235,.05);will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.sketch-cell:hover{box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.sketch-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.88) contrast(1.05);transition:transform 1s var(--ease),filter .6s}
-.sketch-cell:hover img{transform:scale(1.05);filter:brightness(.95) contrast(1.08)}
+.sketch-cell{position:absolute;overflow:hidden;background:rgba(245,240,235,.04);border:1px solid rgba(245,240,235,.07);will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sketch-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.9) contrast(1.05)}
 
 /* Positions — mixed sizes for variation, tighter grouping */
 .sketch-cell:nth-child(1){width:22%;top:0;left:3%}
@@ -254,21 +255,25 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .sketch-cell:nth-child(8){width:34%;top:62%;left:30%}
 .sketch-cell:nth-child(9){width:22%;top:58%;right:2%}
 
-.sketch-label{position:absolute;bottom:0;left:0;right:0;padding:.7rem .8rem;font-family:var(--sans);font-weight:300;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.55);background:linear-gradient(0deg,rgba(26,23,20,.55) 0%,transparent 100%);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none}
-.sketch-cell:hover .sketch-label{opacity:1;transform:translateY(0)}
-
 .sketches-caption{text-align:center;margin-top:1rem;font-family:var(--sans);font-weight:300;font-size:.75rem;color:rgba(245,240,235,.35);letter-spacing:.08em;line-height:1.7;position:relative;z-index:2}
 
 @media(max-width:968px){
-  .sketches{padding:clamp(3rem,6vh,5rem) 1rem}
-  .sketches-field{position:relative;height:auto;min-height:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
-  .sketch-cell,.sketch-cell:nth-child(n){position:relative;width:100% !important;top:auto !important;left:auto !important;right:auto !important;transform:none !important}
-  .sketch-cell:nth-child(2),.sketch-cell:nth-child(5),.sketch-cell:nth-child(8){margin-top:.8rem}
-  .sketch-label{opacity:1;transform:translateY(0);font-size:.5rem;padding:.5rem .6rem}
+  .sketches{padding:clamp(3rem,6vh,5rem) 0}
+  .sketches-inner{padding:0 1rem}
+  .sketches-field{height:220vh;min-height:1400px}
+  /* Mobile scattered layout — varied sizes */
+  .sketch-cell:nth-child(1){width:40% !important;top:0 !important;left:5% !important;right:auto !important}
+  .sketch-cell:nth-child(2){width:48% !important;top:1% !important;left:auto !important;right:2% !important}
+  .sketch-cell:nth-child(3){width:35% !important;top:18% !important;left:8% !important;right:auto !important}
+  .sketch-cell:nth-child(4){width:44% !important;top:20% !important;left:auto !important;right:3% !important}
+  .sketch-cell:nth-child(5){width:52% !important;top:38% !important;left:2% !important;right:auto !important}
+  .sketch-cell:nth-child(6){width:38% !important;top:40% !important;left:auto !important;right:4% !important}
+  .sketch-cell:nth-child(7){width:42% !important;top:58% !important;left:6% !important;right:auto !important}
+  .sketch-cell:nth-child(8){width:50% !important;top:60% !important;left:auto !important;right:1% !important}
+  .sketch-cell:nth-child(9){width:45% !important;top:78% !important;left:25% !important;right:auto !important}
 }
 @media(max-width:600px){
-  .sketches-field{gap:.5rem}
-  .sketch-cell:nth-child(2),.sketch-cell:nth-child(5),.sketch-cell:nth-child(8){margin-top:.4rem}
+  .sketches-field{height:250vh;min-height:1500px}
 }
 
 /* ═══ MADE BY / COLLABORATORS ═══ */
@@ -452,8 +457,9 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .architect-card-body{font-size:.8rem;line-height:1.7}
   .architects-header{margin-bottom:2.5rem}
 
+  .furniture{min-height:70vh}
   .furniture-inner{grid-template-columns:1fr}
-  .furniture-image{min-height:50vh}
+  .furniture-image{display:none}
 
   .made-by{padding:clamp(4rem,8vh,6rem) 1.5rem}
   .made-by-name{font-size:clamp(1.2rem,5vw,1.6rem)}
@@ -702,10 +708,12 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 
 <!-- ═══ KARIMOKU / FURNITURE ═══ -->
 <section class="furniture" id="furniture">
+  <div class="furniture-bg" id="furnitureBg">
+    <img src="images/karimoku-maana.png" alt="Karimoku Case Study furniture collection" id="furnitureBgImg">
+    <div class="furniture-darken" id="furnitureDarken"></div>
+  </div>
   <div class="furniture-inner">
-    <div class="furniture-image float-up">
-      <img src="images/karimoku-maana.png" alt="Karimoku Case Study furniture collection">
-    </div>
+    <div class="furniture-image"></div>
     <div class="furniture-text">
       <div class="furniture-text-inner reveal">
         <h2 class="furniture-title">Karimoku Case<br>&times; Maana</h2>
@@ -715,9 +723,8 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   </div>
 </section>
 
-
 <!-- ═══ SKETCHES / PROCESS ═══ -->
-<section class="sketches">
+<section class="sketches" id="sketchesSection">
   <div class="sketches-inner">
     <div class="sketches-header reveal">
       <p class="sketches-overline">From Pencil to Prototype</p>
@@ -726,39 +733,30 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     <div class="sketches-field" id="sketchesField">
       <div class="sketch-cell" data-speed="-0.08">
         <img src="images/sketches/side-table.png" alt="Side table sketch" loading="lazy">
-        <span class="sketch-label">Side Table</span>
       </div>
       <div class="sketch-cell" data-speed="0.12">
         <img src="images/sketches/lounge-chair.png" alt="Lounge chair sketch" loading="lazy">
-        <span class="sketch-label">Lounge Chair</span>
       </div>
       <div class="sketch-cell" data-speed="-0.05">
         <img src="images/sketches/floor-lamp.png" alt="Floor lamp sketch" loading="lazy">
-        <span class="sketch-label">Floor Lamp</span>
       </div>
       <div class="sketch-cell" data-speed="0.1">
         <img src="images/sketches/armchair.png" alt="Armchair sketch" loading="lazy">
-        <span class="sketch-label">Armchair</span>
       </div>
       <div class="sketch-cell" data-speed="-0.14">
         <img src="images/sketches/round-table.png" alt="Round table sketch" loading="lazy">
-        <span class="sketch-label">Round Table</span>
       </div>
       <div class="sketch-cell" data-speed="0.06">
         <img src="images/sketches/dining-chair.png" alt="Dining chair sketch" loading="lazy">
-        <span class="sketch-label">Dining Chair</span>
       </div>
       <div class="sketch-cell" data-speed="0.15">
         <img src="images/sketches/pendant-light.png" alt="Pendant light sketch" loading="lazy">
-        <span class="sketch-label">Pendant Light</span>
       </div>
       <div class="sketch-cell" data-speed="-0.1">
         <img src="images/sketches/sofa.png" alt="Sofa sketch" loading="lazy">
-        <span class="sketch-label">Sofa</span>
       </div>
       <div class="sketch-cell" data-speed="0.09">
         <img src="images/sketches/low-chair.png" alt="Low chair with side table sketch" loading="lazy">
-        <span class="sketch-label">Low Chair</span>
       </div>
     </div>
     <p class="sketches-caption reveal">Every piece sketched by hand before a single joint was cut.</p>
@@ -1189,73 +1187,100 @@ const s=document.createElement('style');
 s.textContent='@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}';
 document.head.appendChild(s);
 
-// ─── Sketches parallax float (lerped for smoothness) ───
+// ─── Karimoku zoom-to-dark + Sketches parallax float ───
+const furnitureSection=document.getElementById('furniture');
+const furnitureBgImg=document.getElementById('furnitureBgImg');
+const furnitureDarken=document.getElementById('furnitureDarken');
 const sketchField=document.getElementById('sketchesField');
-if(sketchField&&window.innerWidth>968){
-  const cells=sketchField.querySelectorAll('.sketch-cell');
-  const ease=0.04;           // lerp factor — lower = smoother/slower drift
-  const state=[];             // per-cell { speed, currentY, targetY, revealed }
+const isMobileParallax=window.innerWidth<=968;
+const speedScale=isMobileParallax?0.6:1;  // gentler drift on mobile
+
+if(furnitureBgImg){
+  // Karimoku zoom/darken state (lerped)
+  let zoomCur=1, zoomTgt=1;
+  let darkCur=0, darkTgt=0;
+
+  // Sketch parallax state
+  const cells=sketchField?sketchField.querySelectorAll('.sketch-cell'):[];
+  const parallaxEase=0.04;
+  const pState=[];
 
   cells.forEach((cell,i)=>{
-    const speed=parseFloat(cell.dataset.speed)||0;
-    state.push({speed,currentY:0,targetY:0,revealed:false});
-    // Initial hidden state for reveal
+    const speed=(parseFloat(cell.dataset.speed)||0)*speedScale;
+    pState.push({speed,currentY:0,targetY:0,revealed:false});
     cell.style.opacity='0';
     cell.style.transform='translate3d(0,50px,0)';
-    cell.style.transition='opacity 1.2s cubic-bezier(.16,1,.3,1) '+(.1*i)+'s, box-shadow .5s ease';
+    cell.style.transition='opacity 1.2s cubic-bezier(.16,1,.3,1) '+(.1*i)+'s';
   });
 
-  // Reveal on first intersection
-  const sketchRevealObs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const idx=[...cells].indexOf(e.target);
-        state[idx].revealed=true;
-        e.target.style.opacity='1';
-        // Kick off the initial slide-up via transition, then hand off to rAF loop
-        e.target.style.transform='translate3d(0,0,0)';
-        sketchRevealObs.unobserve(e.target);
-      }
-    });
-  },{threshold:.05,rootMargin:'0px 0px -30px 0px'});
-  cells.forEach(c=>sketchRevealObs.observe(c));
+  // Reveal sketch cells
+  if(sketchField){
+    const sketchRevealObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const idx=[...cells].indexOf(e.target);
+          pState[idx].revealed=true;
+          e.target.style.opacity='1';
+          e.target.style.transform='translate3d(0,0,0)';
+          sketchRevealObs.unobserve(e.target);
+        }
+      });
+    },{threshold:.05,rootMargin:'0px 0px -30px 0px'});
+    cells.forEach(c=>sketchRevealObs.observe(c));
+  }
 
-  // Continuous rAF loop — lerps each cell toward its scroll-driven target
   let running=true;
   function tick(){
     if(!running)return;
-    const rect=sketchField.getBoundingClientRect();
-    const center=rect.top+rect.height*0.5;
     const viewH=window.innerHeight;
-    // Normalised scroll position: 0 when section center = viewport center
-    const scrollOffset=center-viewH*0.5;
+    const fRect=furnitureSection.getBoundingClientRect();
 
-    let needsUpdate=false;
-    for(let i=0;i<state.length;i++){
-      const s=state[i];
-      if(!s.revealed)continue;
-      s.targetY=scrollOffset*s.speed;
-      // Lerp toward target
-      s.currentY+=(s.targetY-s.currentY)*ease;
-      // Snap if close enough to avoid sub-pixel jitter
-      if(Math.abs(s.targetY-s.currentY)<0.1)s.currentY=s.targetY;
-      else needsUpdate=true;
-      cells[i].style.transform='translate3d(0,'+s.currentY.toFixed(1)+'px,0)';
+    // ── Karimoku image: zoom + darken as you scroll past ──
+    // progress 0 = section fully in view at top, 1 = section scrolled well past
+    // We want it to start zooming as the section scrolls up and its bottom approaches
+    const scrolledPast=Math.max(0, -fRect.top);
+    const sectionH=fRect.height;
+    const progress=Math.min(1, scrolledPast / (sectionH * 0.8));
+
+    // Scale: 1 → 1.35 as you scroll through
+    zoomTgt=1+progress*0.35;
+    // Darken overlay: 0 → 0.82
+    darkTgt=progress*0.82;
+
+    // Lerp
+    zoomCur+=(zoomTgt-zoomCur)*0.035;
+    darkCur+=(darkTgt-darkCur)*0.035;
+    furnitureBgImg.style.transform='scale('+zoomCur.toFixed(4)+')';
+    furnitureDarken.style.opacity=darkCur.toFixed(4);
+
+    // ── Sketch cells parallax float ──
+    if(sketchField){
+      const sfRect=sketchField.getBoundingClientRect();
+      const center=sfRect.top+sfRect.height*0.5;
+      const scrollOffset=center-viewH*0.5;
+
+      for(let i=0;i<pState.length;i++){
+        const ps=pState[i];
+        if(!ps.revealed)continue;
+        ps.targetY=scrollOffset*ps.speed;
+        ps.currentY+=(ps.targetY-ps.currentY)*parallaxEase;
+        if(Math.abs(ps.targetY-ps.currentY)<0.1)ps.currentY=ps.targetY;
+        cells[i].style.transform='translate3d(0,'+ps.currentY.toFixed(1)+'px,0)';
+      }
     }
-    // Keep looping while section is near viewport or values are still lerping
-    if(needsUpdate||Math.abs(rect.top)<viewH*2){
+
+    // Keep ticking while furniture or sketches are near viewport
+    const inRange=fRect.top<viewH*1.5&&(sketchField?sketchField.getBoundingClientRect().bottom>-viewH*0.5:fRect.bottom>-viewH);
+    if(inRange){
       requestAnimationFrame(tick);
     }else{
       running=false;
     }
   }
 
-  // Re-start the loop on scroll if it stopped
   window.addEventListener('scroll',()=>{
     if(!running){running=true;requestAnimationFrame(tick)}
   },{passive:true});
-
-  // Kick off
   requestAnimationFrame(tick);
 }
 
