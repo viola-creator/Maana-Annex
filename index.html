@@ -234,6 +234,9 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 
 /* ═══ SKETCHES / PROCESS ═══ */
 .sketches{position:relative;background:#3D3228;padding:clamp(5rem,10vh,9rem) 0;overflow:hidden}
+.sketches-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sketches-bg img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.08;filter:brightness(.7) saturate(.3)}
+.sketches-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(61,50,40,.5) 0%,rgba(61,50,40,.85) 40%,rgba(61,50,40,.6) 100%);z-index:1}
 .sketches-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 2rem}
 .sketches-header{text-align:center;margin-bottom:clamp(3rem,6vh,5rem)}
 .sketches-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,240,235,.5);margin-bottom:1rem}
@@ -731,6 +734,10 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 
 <!-- ═══ SKETCHES / PROCESS ═══ -->
 <section class="sketches" id="sketchesSection">
+  <div class="sketches-bg">
+    <img src="images/karimoku-maana.png" alt="" aria-hidden="true">
+    <div class="sketches-bg-overlay"></div>
+  </div>
   <div class="sketches-inner">
     <div class="sketches-header reveal">
       <p class="sketches-overline">Karimoku Case &times; Maana</p>
