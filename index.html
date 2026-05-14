@@ -75,7 +75,7 @@ button{cursor:pointer;font-family:var(--sans)}
 
 /* ═══ HERO ═══ */
 .hero{position:relative;height:100vh;min-height:650px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:6.125rem;overflow:hidden;background:var(--bg-deep)}
-.hero-bg{position:absolute;inset:0;background-image:url('images/hero.jpeg');background-size:cover;background-position:center;background-color:#2A2520;transform:scale(1.08);animation:heroZoom 18s ease forwards}
+.hero-bg{position:absolute;inset:0;background-image:url('images/hero.png');background-size:cover;background-position:center;background-color:#2A2520;transform:scale(1.08);animation:heroZoom 18s ease forwards}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,.3) 0%,rgba(26,23,20,.15) 20%,rgba(26,23,20,.25) 45%,rgba(26,23,20,.4) 70%,rgba(26,23,20,.6) 100%);z-index:1}
 @keyframes heroZoom{to{transform:scale(1)}}
 
@@ -222,8 +222,8 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .furniture{position:relative;background:var(--bg-deep);overflow:hidden;min-height:100vh}
 .furniture-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .furniture-bg img{width:100%;height:100%;object-fit:cover;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:center center}
-.furniture-darken{position:absolute;inset:0;z-index:1;background:#3D3228;opacity:0;will-change:opacity}
-.furniture::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(0deg,#3D3228 0%,transparent 100%);z-index:2;pointer-events:none}
+.furniture-darken{position:absolute;inset:0;z-index:1;background:var(--bg);opacity:0;will-change:opacity}
+.furniture::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(0deg,var(--bg) 0%,transparent 100%);z-index:2;pointer-events:none}
 .furniture-inner{position:relative;z-index:3;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;align-items:center}
 .furniture-image{display:none}
 .furniture-text{display:flex;align-items:center;padding:clamp(3rem,6vw,6rem)}
@@ -233,57 +233,51 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .furniture-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:rgba(245,240,235,.7);margin-bottom:1.5rem}
 
 /* ═══ SKETCHES / PROCESS ═══ */
-.sketches{position:relative;background:#3D3228;padding:clamp(5rem,10vh,9rem) 0;overflow:hidden}
-.sketches-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.sketches-bg img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.08;filter:brightness(.7) saturate(.3)}
-.sketches-bg-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(61,50,40,.5) 0%,rgba(61,50,40,.85) 40%,rgba(61,50,40,.6) 100%);z-index:1}
+.sketches{position:relative;background:var(--bg);padding:clamp(4rem,7vh,7rem) 0 0;overflow:hidden}
+.sketches-bg{display:none}
 .sketches-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 2rem}
-.sketches-header{text-align:center;margin-bottom:clamp(3rem,6vh,5rem)}
-.sketches-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,240,235,.5);margin-bottom:1rem}
-.sketches-title{font-family:var(--sans);font-weight:300;font-size:clamp(.85rem,1.5vw,1rem);line-height:1.7;color:rgba(245,240,235,.55);max-width:480px;margin:0 auto;letter-spacing:.03em}
+.sketches-header{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;text-align:center;width:100%;max-width:500px;padding:0 2rem}
+.sketches-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1.2rem;line-height:1}
+.sketches-overline span{background:var(--earth);color:var(--text-light);padding:.35em .6em;display:inline;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sketches-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.1rem,2.2vw,1.55rem);line-height:2.1;color:var(--text-light);letter-spacing:.01em}
+.sketches-title span{background:var(--earth);padding:.3em .55em;display:inline;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* Scattered field — tall container, absolutely placed children */
-.sketches-field{position:relative;width:100%;height:160vh;min-height:1100px}
-.sketch-cell{position:absolute;overflow:hidden;background:rgba(245,240,235,.04);border:1px solid rgba(245,240,235,.07);will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.sketch-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.9) contrast(1.05)}
+.sketches-field{position:relative;width:100%;height:105vh;min-height:750px}
+.sketch-cell{position:absolute;overflow:visible;background:none;border:none;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sketch-cell img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply;opacity:.4;-webkit-mask-image:radial-gradient(ellipse 72% 68% at 50% 50%,black 35%,transparent 100%);mask-image:radial-gradient(ellipse 72% 68% at 50% 50%,black 35%,transparent 100%)}
 
-/* Positions — mixed sizes for variation, tighter grouping */
-.sketch-cell:nth-child(1){width:22%;top:0;left:3%}
-.sketch-cell:nth-child(2){width:32%;top:2%;left:34%}
-.sketch-cell:nth-child(3){width:20%;top:0;right:3%}
-.sketch-cell:nth-child(4){width:28%;top:30%;left:0}
-.sketch-cell:nth-child(5){width:18%;top:34%;left:36%}
-.sketch-cell:nth-child(6){width:30%;top:28%;right:0}
-.sketch-cell:nth-child(7){width:20%;top:60%;left:5%}
-.sketch-cell:nth-child(8){width:34%;top:62%;left:30%}
-.sketch-cell:nth-child(9){width:22%;top:58%;right:2%}
+/* Positions — Lounge Chair 03 giant center, rest small */
+.sketch-cell:nth-child(1){width:26%;top:0;left:2%}
+.sketch-cell:nth-child(2){width:34%;top:3%;left:36%}
+.sketch-cell:nth-child(3){width:22%;top:1%;right:3%}
+.sketch-cell:nth-child(4){width:30%;top:34%;left:4%}
+.sketch-cell:nth-child(5){width:24%;top:38%;right:6%}
+.sketch-cell:nth-child(6){width:28%;top:52%;left:8%}
+.sketch-cell:nth-child(7){width:60%;top:15%;left:20%;z-index:2}
 
-.sketches-caption{text-align:center;margin-top:1rem;font-family:var(--sans);font-weight:300;font-size:.75rem;color:rgba(245,240,235,.35);letter-spacing:.08em;line-height:1.7;position:relative;z-index:2}
+.sketches-caption{text-align:center;margin-top:1rem;font-family:var(--sans);font-weight:300;font-size:.75rem;color:var(--text-muted);letter-spacing:.08em;line-height:1.7;position:relative;z-index:2}
 
 @media(max-width:968px){
-  .sketches{padding:clamp(2rem,4vh,3rem) 0}
+  .sketches{padding:clamp(1rem,2vh,1.5rem) 0 0}
   .sketches-inner{padding:0 .6rem}
   .sketches-header{margin-bottom:clamp(1.5rem,3vh,2.5rem)}
-  /* Compact scattered — fits in ~200vh */
-  .sketches-field{height:180vh;min-height:900px;max-height:1100px}
-  /* Row 1: three across */
-  .sketch-cell:nth-child(1){width:30% !important;top:0 !important;left:2% !important;right:auto !important}
-  .sketch-cell:nth-child(2){width:38% !important;top:2% !important;left:33% !important;right:auto !important}
-  .sketch-cell:nth-child(3){width:26% !important;top:0 !important;left:auto !important;right:1% !important}
-  /* Row 2: two offset */
-  .sketch-cell:nth-child(4){width:44% !important;top:26% !important;left:3% !important;right:auto !important}
-  .sketch-cell:nth-child(5){width:36% !important;top:30% !important;left:auto !important;right:4% !important}
-  /* Row 3: three staggered */
-  .sketch-cell:nth-child(6){width:28% !important;top:54% !important;left:1% !important;right:auto !important}
-  .sketch-cell:nth-child(7){width:40% !important;top:56% !important;left:30% !important;right:auto !important}
-  .sketch-cell:nth-child(8){width:26% !important;top:52% !important;left:auto !important;right:2% !important}
-  /* Row 4: one centered */
-  .sketch-cell:nth-child(9){width:42% !important;top:80% !important;left:28% !important;right:auto !important}
+  .sketches-field{height:80vh;min-height:400px;max-height:550px}
+  /* Row 1: two staggered */
+  .sketch-cell:nth-child(1){width:42% !important;top:0 !important;left:3% !important;right:auto !important}
+  .sketch-cell:nth-child(2){width:50% !important;top:4% !important;left:auto !important;right:1% !important}
+  /* Row 2: three across */
+  .sketch-cell:nth-child(3){width:28% !important;top:30% !important;left:2% !important;right:auto !important}
+  .sketch-cell:nth-child(4){width:36% !important;top:32% !important;left:32% !important;right:auto !important}
+  .sketch-cell:nth-child(5){width:26% !important;top:28% !important;left:auto !important;right:2% !important}
+  /* Row 3: two offset */
+  .sketch-cell:nth-child(6){width:48% !important;top:55% !important;left:4% !important;right:auto !important}
+  .sketch-cell:nth-child(7){width:75% !important;top:12% !important;left:12% !important;right:auto !important;z-index:2 !important}
 
   .nav-mobile-cta{font-size:.8rem;padding:.8rem 1.8rem;letter-spacing:.12em}
 }
 @media(max-width:600px){
-  .sketches-field{height:160vh;min-height:750px;max-height:950px}
+  .sketches-field{height:80vh;min-height:400px;max-height:550px}
 }
 
 /* ═══ MADE BY / COLLABORATORS ═══ */
@@ -298,7 +292,7 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .made-by-role{font-family:var(--sans);font-weight:300;font-size:clamp(.75rem,1.2vw,1rem);color:var(--text-muted);letter-spacing:.04em;white-space:nowrap}
 
 /* ═══ MATERIALS — horizontal drag gallery ═══ */
-.materials{padding:clamp(5rem,10vh,10rem) 0;background:var(--bg);overflow:hidden}
+.materials{padding:clamp(4rem,7vh,7rem) 0;background:var(--bg);overflow:hidden}
 .materials-header{max-width:1200px;margin:0 auto;padding:0 3rem;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
 .materials-headline{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.5rem);line-height:1.1;color:var(--text)}
 .materials-body{font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--text-sec);max-width:320px;text-align:right}
@@ -623,7 +617,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
         <div class="story-step-inner reveal">
           <span class="story-step-num">01</span>
           <h3 class="story-step-title">The Intention</h3>
-          <p class="story-step-body">Our Annex project is close to our hearts, a space where years of learning, craftsmanship, and connection have gently come together. It marks our very first new build, thoughtfully created using materials carried over from our previous renovation projects, allowing pieces of our journey to live on in a new form. Every texture, object, and corner has been carefully considered with intention, shaped by the experiences we've shared and the insights we've gained from welcoming guests over the years. More than just a place to stay, the Annex is a reflection of the people who have inspired us along the way.</p>
+          <p class="story-step-body">Maana Annex is the first home we have built from the ground up using reclaimed materials from our machiya. Since our first home a decade ago, everything we have learned about living, restoring, and making space has been gathered here, shaping a new story that feels wholly our own.<br><br>More than just a place to stay, the Annex is a reflection of the stories and people who have inspired us along the way.</p>
           <p class="story-step-jp">意図 — 心を込めた新しい始まり</p>
           <div class="story-step-divider"></div>
         </div>
@@ -633,7 +627,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
         <div class="story-step-inner reveal">
           <span class="story-step-num">02</span>
           <h3 class="story-step-title">The Hands</h3>
-          <p class="story-step-body">In a world shaped by mass production and uniform templates, the Annex was created by people, for people, and we wanted that human touch to remain visible. You may notice the gentle arc of a plasterer's trowel left behind on the walls, the quiet chisel marks of the joiner within the timber joints, or even the subtle fingerprint of one of our ceramicists pressed into the glaze. Even the tsuchikabe earthen walls were carefully recycled and recreated by our own Maana team, carrying forward materials and memories from our previous projects into this new home. The Annex is a celebration of process, artistry, and the beauty of natural materials made slowly by human hands.</p>
+          <p class="story-step-body">The Annex was created with many hands and we wanted that human touch to remain visible in a world shaped by mass production and uniform templates.<br><br>You may notice the gentle arc of a plasterer's trowel left in the wall, or a ceramicist's fingerprint pressed into a glaze. The recycled earthen walls, shaped by our sakan, a traditional Japanese plasterer, still carry a faint mineral scent on cool mornings before the room begins to warm.<br><br>The Annex is a celebration of process, artistry, and the beauty of natural materials made slowly by human hands.</p>
           <p class="story-step-jp">手の記憶 — すべての表面に宿る人の証</p>
           <div class="story-step-divider"></div>
         </div>
@@ -643,7 +637,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
         <div class="story-step-inner reveal">
           <span class="story-step-num">03</span>
           <h3 class="story-step-title">Full Circle</h3>
-          <p class="story-step-body">Together with everything we have learned from the ways our guests live, rest, gather, we hoped to create a home; one that feels lived in. A place where guests can arrive and exhale. Situated beside the very first machiya that began the Maana journey, the Annex feels like a quiet full-circle moment; a return to where it all started, while also looking toward what is still to come. For Maana, the Annex is more than a place to stay. It is a continuation of our story, woven together through memory, material, and the people who have walked alongside us over the years. And in welcoming guests here, it feels as though we are opening the door not simply to a stay, but to a homecoming.</p>
+          <p class="story-step-body">The Annex sits next door to the very first machiya we restored. The house where Maana began. After years of working outward, opening new homes across Kyoto, we found ourselves building again on the same street.<br><br>For Maana, the Annex is more than a place to stay. It is a continuation of our story, woven together through memory, material, and the people who have walked alongside us over the years. And in welcoming guests here, it feels as though we are opening the door not simply to a stay, but to a homecoming.</p>
           <p class="story-step-jp">円環 — 始まりの場所に帰る</p>
           <div class="story-step-divider"></div>
         </div>
@@ -661,8 +655,8 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   <div class="tsuchikabe-gradient"></div>
   <div class="tsuchikabe-content reveal">
     <p class="tsuchikabe-overline">Tsuchikabe &mdash; 土壁</p>
-    <h2 class="tsuchikabe-title">A second life for earth.</h2>
-    <p class="tsuchikabe-body">The tsuchikabe walls were once the walls of Maana Atelier, taken down carefully, cleaned by hand, mixed again with our own team, and brought here so the same earth could begin a second life in this new home.</p>
+    <h2 class="tsuchikabe-title">A second life for our earthen walls.</h2>
+    <p class="tsuchikabe-body">The tsuchikabe walls in this home once stood inside Maana Atelier. Carefully taken down by hand, each fragment of earth was cleaned, reclaimed, and mixed again into fresh clay by the Maana team. The same earth can hereby begin a second life in a new home, carrying the memories from Maana forward.</p>
     <p class="tsuchikabe-jp">古い土が新しい壁になる</p>
   </div>
 </section>
@@ -739,47 +733,36 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     <div class="sketches-bg-overlay"></div>
   </div>
   <div class="sketches-inner">
-    <div class="sketches-header reveal">
-      <p class="sketches-overline">Karimoku Case &times; Maana</p>
-      <h2 class="sketches-title">Designed by Norm Architects and Keiji Ashizawa Design with Maana. Coming soon.</h2>
-    </div>
     <div class="sketches-field" id="sketchesField">
       <div class="sketch-cell" data-speed="-0.08">
-        <img src="images/sketches/side-table.png" alt="Side table sketch" loading="lazy">
+        <img src="images/sketches/Maana Lounge Chair 01.png" alt="Furniture sketch" loading="lazy">
       </div>
       <div class="sketch-cell" data-speed="0.12">
-        <img src="images/sketches/lounge-chair.png" alt="Lounge chair sketch" loading="lazy">
+        <img src="images/sketches/Maana Sofa 01.png" alt="Furniture sketch" loading="lazy">
       </div>
-      <div class="sketch-cell" data-speed="-0.05">
-        <img src="images/sketches/floor-lamp.png" alt="Floor lamp sketch" loading="lazy">
+      <div class="sketch-cell" data-speed="-0.06">
+        <img src="images/sketches/Maana Pendant 01.png" alt="Furniture sketch" loading="lazy">
       </div>
       <div class="sketch-cell" data-speed="0.1">
-        <img src="images/sketches/armchair.png" alt="Armchair sketch" loading="lazy">
+        <img src="images/sketches/Maana Lounge Chair 02.png" alt="Furniture sketch" loading="lazy">
       </div>
       <div class="sketch-cell" data-speed="-0.14">
-        <img src="images/sketches/round-table.png" alt="Round table sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="0.06">
-        <img src="images/sketches/dining-chair.png" alt="Dining chair sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="0.15">
-        <img src="images/sketches/pendant-light.png" alt="Pendant light sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="-0.1">
-        <img src="images/sketches/sofa.png" alt="Sofa sketch" loading="lazy">
+        <img src="images/sketches/Maana Floor Lamo 01.png" alt="Furniture sketch" loading="lazy">
       </div>
       <div class="sketch-cell" data-speed="0.09">
-        <img src="images/sketches/low-chair.png" alt="Low chair with side table sketch" loading="lazy">
+        <img src="images/sketches/Maana Sofa 02.png" alt="Furniture sketch" loading="lazy">
+      </div>
+      <div class="sketch-cell" data-speed="-0.07">
+        <img src="images/sketches/Maana Lounge Chair 03.png" alt="Furniture sketch" loading="lazy">
       </div>
     </div>
-    <p class="sketches-caption reveal">Every piece sketched by hand before a single joint was cut.</p>
   </div>
 </section>
 
 <!-- ═══ MATERIALS ═══ -->
 <section class="materials" id="materials">
   <div class="materials-header reveal">
-    <h2 class="materials-headline">Chosen to age,<br>not to endure.</h2>
+    <h2 class="materials-headline">Made to gather<br>traces of living.</h2>
   </div>
   <div class="materials-track" id="materialsTrack">
     <div class="material-card float-up">
@@ -862,7 +845,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 <!-- ═══ LOCATION ═══ -->
 <section class="location reveal">
   <p class="location-caption">Location</p>
-  <p class="location-text">Tucked away in Tambaguchi, a quiet neighborhood away from the tourist crowds. A place for local gems and living like a local.</p>
+  <p class="location-text">Tucked away in Tambaguchi, a quiet neighborhood away from the tourist crowds. A place for local gems and living amongst the locals.</p>
 </section>
 
 <!-- ═══ WAITLIST (bottom) ═══ -->
