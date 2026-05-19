@@ -388,7 +388,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 
   /* Hero — centered layout on mobile */
   .hero{min-height:100vh}
-  .hero-bg{background-position:center 62%;transform:scale(1.04);animation:heroZoomM 22s ease forwards}
+  .hero-bg{background-position:center center;background-size:cover;transform:scale(1.04);animation:heroZoomM 22s ease forwards}
   @keyframes heroZoomM{to{transform:scale(1)}}
   .hero-overlay{background:linear-gradient(180deg,rgba(26,23,20,.35) 0%,rgba(26,23,20,.1) 30%,rgba(26,23,20,.3) 55%,rgba(26,23,20,.7) 100%)}
 
@@ -446,6 +446,8 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .timeline-dot{width:5px;height:5px;margin-bottom:.7rem}
   .timeline-season{font-size:.52rem;letter-spacing:.14em;margin-bottom:.4rem}
   .timeline-label{font-size:.78rem;line-height:1.25}
+  .timeline-item:nth-child(2) .timeline-label{font-size:.78rem}
+  .timeline-item:nth-child(2) .timeline-dot{width:6px;height:6px}
   .timeline-detail{display:none}
 
   .projects{padding:3rem 1.5rem}
