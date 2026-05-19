@@ -211,8 +211,8 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .architects-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 .architect-card{padding:3rem;background:rgba(245,240,235,.02);transition:background .4s}
 .architect-card:hover{background:rgba(245,240,235,.04)}
-.architect-card-img{width:100%;aspect-ratio:16/10;background-size:cover;background-position:center;margin-bottom:2rem;filter:grayscale(.15);transition:filter .6s}
-.architect-card:hover .architect-card-img{filter:grayscale(0)}
+.architect-card-img{width:100%;aspect-ratio:16/10;background-size:cover;background-position:center;margin-bottom:2rem;filter:grayscale(1) brightness(.6) contrast(.9);opacity:.45;mix-blend-mode:luminosity;transition:opacity .6s,filter .6s}
+.architect-card:hover .architect-card-img{opacity:.65;filter:grayscale(1) brightness(.7) contrast(.95)}
 .architect-card-loc{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.4);margin-bottom:.8rem}
 .architect-card-name{font-family:var(--serif);font-weight:300;font-size:1.8rem;color:var(--text-light);margin-bottom:1rem;line-height:1.2}
 .architect-card-role{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--earth);margin-bottom:1rem}
@@ -222,7 +222,7 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .furniture{position:relative;background:var(--bg-deep);overflow:hidden;min-height:100vh}
 .furniture-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .furniture-bg img{width:100%;height:100%;object-fit:cover;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:center center}
-.furniture-darken{position:absolute;inset:0;z-index:1;background:var(--bg);opacity:0;will-change:opacity}
+.furniture-darken{position:absolute;inset:0;z-index:1;background:#000;opacity:0;will-change:opacity}
 .furniture::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(0deg,var(--bg) 0%,transparent 100%);z-index:2;pointer-events:none}
 .furniture-inner{position:relative;z-index:3;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;align-items:center}
 .furniture-image{display:none}
@@ -232,52 +232,13 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .furniture-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--text-light);margin-bottom:1.5rem}
 .furniture-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:rgba(245,240,235,.7);margin-bottom:1.5rem}
 
-/* ═══ SKETCHES / PROCESS ═══ */
-.sketches{position:relative;background:var(--bg);padding:clamp(4rem,7vh,7rem) 0 0;overflow:hidden}
-.sketches-bg{display:none}
-.sketches-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 2rem}
-.sketches-header{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;text-align:center;width:100%;max-width:500px;padding:0 2rem}
-.sketches-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1.2rem;line-height:1}
-.sketches-overline span{background:var(--earth);color:var(--text-light);padding:.35em .6em;display:inline;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.sketches-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.1rem,2.2vw,1.55rem);line-height:2.1;color:var(--text-light);letter-spacing:.01em}
-.sketches-title span{background:var(--earth);padding:.3em .55em;display:inline;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-
-/* Scattered field — tall container, absolutely placed children */
-.sketches-field{position:relative;width:100%;height:105vh;min-height:750px}
-.sketch-cell{position:absolute;overflow:visible;background:none;border:none;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.sketch-cell img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply;opacity:.4;-webkit-mask-image:radial-gradient(ellipse 72% 68% at 50% 50%,black 35%,transparent 100%);mask-image:radial-gradient(ellipse 72% 68% at 50% 50%,black 35%,transparent 100%)}
-
-/* Positions — Lounge Chair 03 giant center, rest small */
-.sketch-cell:nth-child(1){width:26%;top:0;left:2%}
-.sketch-cell:nth-child(2){width:34%;top:3%;left:36%}
-.sketch-cell:nth-child(3){width:22%;top:1%;right:3%}
-.sketch-cell:nth-child(4){width:30%;top:34%;left:4%}
-.sketch-cell:nth-child(5){width:24%;top:38%;right:6%}
-.sketch-cell:nth-child(6){width:28%;top:52%;left:8%}
-.sketch-cell:nth-child(7){width:60%;top:15%;left:20%;z-index:2}
-
-.sketches-caption{text-align:center;margin-top:1rem;font-family:var(--sans);font-weight:300;font-size:.75rem;color:var(--text-muted);letter-spacing:.08em;line-height:1.7;position:relative;z-index:2}
+/* Furniture rendering image */
+.furniture-rendering{position:relative;z-index:3;width:100%;max-width:1000px;margin:0 auto;padding:0 2rem}
+.furniture-rendering img{width:100%;height:auto}
+.furniture-caption{text-align:center;margin-top:1.5rem;font-family:var(--sans);font-weight:300;font-size:.75rem;color:var(--text-muted);letter-spacing:.08em;line-height:1.7}
 
 @media(max-width:968px){
-  .sketches{padding:clamp(1rem,2vh,1.5rem) 0 0}
-  .sketches-inner{padding:0 .6rem}
-  .sketches-header{margin-bottom:clamp(1.5rem,3vh,2.5rem)}
-  .sketches-field{height:80vh;min-height:400px;max-height:550px}
-  /* Row 1: two staggered */
-  .sketch-cell:nth-child(1){width:42% !important;top:0 !important;left:3% !important;right:auto !important}
-  .sketch-cell:nth-child(2){width:50% !important;top:4% !important;left:auto !important;right:1% !important}
-  /* Row 2: three across */
-  .sketch-cell:nth-child(3){width:28% !important;top:30% !important;left:2% !important;right:auto !important}
-  .sketch-cell:nth-child(4){width:36% !important;top:32% !important;left:32% !important;right:auto !important}
-  .sketch-cell:nth-child(5){width:26% !important;top:28% !important;left:auto !important;right:2% !important}
-  /* Row 3: two offset */
-  .sketch-cell:nth-child(6){width:48% !important;top:55% !important;left:4% !important;right:auto !important}
-  .sketch-cell:nth-child(7){width:75% !important;top:12% !important;left:12% !important;right:auto !important;z-index:2 !important}
-
   .nav-mobile-cta{font-size:.8rem;padding:.8rem 1.8rem;letter-spacing:.12em}
-}
-@media(max-width:600px){
-  .sketches-field{height:80vh;min-height:400px;max-height:550px}
 }
 
 /* ═══ MADE BY / COLLABORATORS ═══ */
@@ -292,7 +253,7 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .made-by-role{font-family:var(--sans);font-weight:300;font-size:clamp(.75rem,1.2vw,1rem);color:var(--text-muted);letter-spacing:.04em;white-space:nowrap}
 
 /* ═══ MATERIALS — horizontal drag gallery ═══ */
-.materials{padding:clamp(4rem,7vh,7rem) 0;background:var(--bg);overflow:hidden}
+.materials{padding:clamp(6rem,12vh,10rem) 0;background:var(--bg);overflow:hidden}
 .materials-header{max-width:1200px;margin:0 auto;padding:0 3rem;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
 .materials-headline{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.5rem);line-height:1.1;color:var(--text)}
 .materials-body{font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--text-sec);max-width:320px;text-align:right}
@@ -308,18 +269,15 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .material-card-jp{font-family:var(--jp);font-weight:200;font-size:.95rem;color:var(--text-muted);margin-top:.15rem}
 .materials-hint{font-family:var(--sans);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-top:1.5rem}
 
-/* ═══ CONSTRUCTION INTERLUDE ═══ */
-.construction-break{position:relative;height:55vh;overflow:hidden;background:var(--bg-deep)}
-.construction-break img{width:100%;height:100%;object-fit:cover;opacity:.7}
-.construction-break-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,23,20,.7) 0%,rgba(26,23,20,.1) 40%,rgba(26,23,20,.1) 60%,rgba(26,23,20,.5) 100%);z-index:1}
-.construction-break-text{position:absolute;bottom:3rem;left:3rem;z-index:2}
+/* ═══ CONSTRUCTION + TIMELINE (combined) ═══ */
+.construction-timeline{position:relative;overflow:hidden;background:var(--bg-deep)}
+.construction-timeline-bg{position:absolute;inset:0;z-index:0}
+.construction-timeline-bg img{width:100%;height:100%;object-fit:cover;opacity:.7}
+.construction-timeline-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,23,20,.85) 0%,rgba(26,23,20,.3) 35%,rgba(26,23,20,.1) 60%,rgba(26,23,20,.4) 100%);z-index:1}
+.construction-text{position:relative;z-index:2;padding:clamp(12rem,25vh,20rem) 3rem clamp(4rem,8vh,6rem)}
 .construction-break-label{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(245,240,235,.5);margin-bottom:.5rem}
 .construction-break-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--text-light);line-height:1.2}
-
-/* ═══ TIMELINE ═══ */
-.timeline-section{position:relative;padding:clamp(5rem,10vh,8rem) 3rem;background:var(--bg-deep);overflow:hidden}
-.timeline-bg{position:absolute;inset:0;z-index:0}
-.timeline-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.15;filter:brightness(.5)}
+.timeline-section{position:relative;z-index:2;padding:0 3rem clamp(5rem,10vh,8rem)}
 .timeline-header{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
 .timeline-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;color:var(--text-light)}
 .timeline-subtitle{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.35)}
@@ -665,15 +623,15 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 <section class="video-interlude">
   <div class="video-interlude-panel float-up">
     <video autoplay muted loop playsinline>
-      <source src="videos/mixing.mp4" type="video/mp4">
+      <source src="videos/video.MP4" type="video/mp4">
     </video>
-    <span class="video-interlude-label">Mixing the tsuchikabe plaster</span>
+    <span class="video-interlude-label">Sieving recycled tsuchikabe</span>
   </div>
   <div class="video-interlude-panel float-up float-up-d1">
     <video autoplay muted loop playsinline>
-      <source src="videos/applying.mp4" type="video/mp4">
+      <source src="videos/mixing.mp4" type="video/mp4">
     </video>
-    <span class="video-interlude-label">Applying to the bamboo frame</span>
+    <span class="video-interlude-label">Mixing the tsuchikabe plaster</span>
   </div>
 </section>
 
@@ -693,14 +651,14 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     </div>
     <div class="architects-grid">
       <div class="architect-card">
-        <div class="architect-card-img float-up" style="background-image:url('images/Norm Profile.jpg')"></div>
+        <div class="architect-card-img float-up" style="background-image:url('images/Partners Finished - Horizontal.png')"></div>
         <div class="reveal">
           <p class="architect-card-loc">Copenhagen, Denmark</p>
           <h3 class="architect-card-name">Norm Architects</h3>
         </div>
       </div>
       <div class="architect-card">
-        <div class="architect-card-img float-up float-up-d1" style="background-image:url('images/Keiji Ashizawa Design profile.jpg')"></div>
+        <div class="architect-card-img float-up float-up-d1" style="background-image:url('images/Keiji Ashizawa Portait_モノクロPhoto credit_Mario Depicolzuane１.jpg')"></div>
         <div class="reveal reveal-d1">
           <p class="architect-card-loc">Tokyo, Japan</p>
           <h3 class="architect-card-name">Keiji Ashizawa Design</h3>
@@ -713,7 +671,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 <!-- ═══ KARIMOKU / FURNITURE ═══ -->
 <section class="furniture" id="furniture">
   <div class="furniture-bg" id="furnitureBg">
-    <img src="images/karimoku-maana.png" alt="Karimoku Case Study furniture collection" id="furnitureBgImg">
+    <img src="images/Furniture rendering.png" alt="Karimoku Case Study furniture rendering" id="furnitureBgImg">
     <div class="furniture-darken" id="furnitureDarken"></div>
   </div>
   <div class="furniture-inner">
@@ -721,39 +679,6 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
     <div class="furniture-text">
       <div class="furniture-text-inner reveal">
         <h2 class="furniture-title">Karimoku Case<br>&times; Maana</h2>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SKETCHES / PROCESS ═══ -->
-<section class="sketches" id="sketchesSection">
-  <div class="sketches-bg">
-    <img src="images/karimoku-maana.png" alt="" aria-hidden="true">
-    <div class="sketches-bg-overlay"></div>
-  </div>
-  <div class="sketches-inner">
-    <div class="sketches-field" id="sketchesField">
-      <div class="sketch-cell" data-speed="-0.08">
-        <img src="images/sketches/Maana Lounge Chair 01.png" alt="Furniture sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="0.12">
-        <img src="images/sketches/Maana Sofa 01.png" alt="Furniture sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="-0.06">
-        <img src="images/sketches/Maana Pendant 01.png" alt="Furniture sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="0.1">
-        <img src="images/sketches/Maana Lounge Chair 02.png" alt="Furniture sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="-0.14">
-        <img src="images/sketches/Maana Floor Lamo 01.png" alt="Furniture sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="0.09">
-        <img src="images/sketches/Maana Sofa 02.png" alt="Furniture sketch" loading="lazy">
-      </div>
-      <div class="sketch-cell" data-speed="-0.07">
-        <img src="images/sketches/Maana Lounge Chair 03.png" alt="Furniture sketch" loading="lazy">
       </div>
     </div>
   </div>
@@ -799,21 +724,17 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   <p class="materials-hint reveal">Drag to explore &rarr;</p>
 </section>
 
-<!-- ═══ CONSTRUCTION INTERLUDE ═══ -->
-<section class="construction-break float-up">
-  <img src="images/construction.jpg" alt="Maana Annex under construction in Kyoto">
-  <div class="construction-break-overlay"></div>
-  <div class="construction-break-text">
+<!-- ═══ CONSTRUCTION + TIMELINE ═══ -->
+<section class="construction-timeline" id="timeline">
+  <div class="construction-timeline-bg">
+    <img src="images/construction.jpg" alt="Maana Annex under construction in Kyoto">
+  </div>
+  <div class="construction-timeline-overlay"></div>
+  <div class="construction-text">
     <p class="construction-break-label">Spring 2026 &mdash; Tambaguchi, Kyoto</p>
     <h3 class="construction-break-title">Taking shape.</h3>
   </div>
-</section>
-
-<!-- ═══ TIMELINE ═══ -->
-<section class="timeline-section" id="timeline">
-  <div class="timeline-bg">
-    <img src="images/winter.jpg" alt="Kyoto rooftop in winter snow">
-  </div>
+  <div class="timeline-section">
   <div class="timeline-header reveal">
     <h2 class="timeline-title">Patience is part<br>of the design.</h2>
     <p class="timeline-subtitle">The Journey Ahead</p>
@@ -839,6 +760,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
       <p class="timeline-season">Winter 2026</p>
       <p class="timeline-label">Doors open</p>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1183,71 +1105,35 @@ const s=document.createElement('style');
 s.textContent='@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}';
 document.head.appendChild(s);
 
-// ─── Karimoku zoom-to-dark + Sketches parallax float ───
+// ─── Karimoku zoom-to-dark ───
 const furnitureSection=document.getElementById('furniture');
 const furnitureBgImg=document.getElementById('furnitureBgImg');
 const furnitureDarken=document.getElementById('furnitureDarken');
-const sketchField=document.getElementById('sketchesField');
-const isMobileParallax=window.innerWidth<=968;
-const speedScale=isMobileParallax?0.6:1;  // gentler drift on mobile
 
 if(furnitureBgImg){
-  // Karimoku zoom/darken state (lerped)
   let zoomCur=1, zoomTgt=1;
   let darkCur=0, darkTgt=0;
-
-  // Sketch parallax state
-  const cells=sketchField?sketchField.querySelectorAll('.sketch-cell'):[];
-  const parallaxEase=0.04;
-  const pState=[];
-
-  cells.forEach((cell,i)=>{
-    const speed=(parseFloat(cell.dataset.speed)||0)*speedScale;
-    pState.push({speed,currentY:0,targetY:0,revealed:true});
-  });
-
   let running=true;
+
   function tick(){
     if(!running)return;
     const viewH=window.innerHeight;
     const fRect=furnitureSection.getBoundingClientRect();
-
-    // ── Karimoku image: zoom + darken as you scroll past ──
-    // progress 0 = section fully in view at top, 1 = section scrolled well past
-    // We want it to start zooming as the section scrolls up and its bottom approaches
     const scrolledPast=Math.max(0, -fRect.top);
     const sectionH=fRect.height;
-    const progress=Math.min(1, scrolledPast / (sectionH * 0.8));
+    // Start after 20% of section has scrolled past
+    const delayed=Math.max(0, scrolledPast - sectionH * 0.2);
+    const progress=Math.min(1, delayed / (sectionH * 0.6));
 
-    // Scale: 1 → 1.35 as you scroll through
     zoomTgt=1+progress*0.35;
-    // Darken overlay: 0 → 0.82
     darkTgt=progress*0.82;
 
-    // Lerp
     zoomCur+=(zoomTgt-zoomCur)*0.035;
     darkCur+=(darkTgt-darkCur)*0.035;
     furnitureBgImg.style.transform='scale('+zoomCur.toFixed(4)+')';
     furnitureDarken.style.opacity=darkCur.toFixed(4);
 
-    // ── Sketch cells parallax float ──
-    if(sketchField){
-      const sfRect=sketchField.getBoundingClientRect();
-      const center=sfRect.top+sfRect.height*0.5;
-      const scrollOffset=center-viewH*0.5;
-
-      for(let i=0;i<pState.length;i++){
-        const ps=pState[i];
-        if(!ps.revealed)continue;
-        ps.targetY=scrollOffset*ps.speed;
-        ps.currentY+=(ps.targetY-ps.currentY)*parallaxEase;
-        if(Math.abs(ps.targetY-ps.currentY)<0.1)ps.currentY=ps.targetY;
-        cells[i].style.transform='translate3d(0,'+ps.currentY.toFixed(1)+'px,0)';
-      }
-    }
-
-    // Keep ticking while furniture or sketches are near viewport
-    const inRange=fRect.top<viewH*1.5&&(sketchField?sketchField.getBoundingClientRect().bottom>-viewH*0.5:fRect.bottom>-viewH);
+    const inRange=fRect.top<viewH*1.5&&fRect.bottom>-viewH;
     if(inRange){
       requestAnimationFrame(tick);
     }else{
