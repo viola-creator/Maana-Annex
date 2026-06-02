@@ -351,105 +351,159 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 .scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--earth);z-index:200;width:0;opacity:.6;transition:width .1s linear}
 
 /* ═══ RESPONSIVE ═══ */
+/*
+ * ═══ MOBILE TYPE SCALE ═══
+ * Headings (serif):  clamp values per section
+ * Body text:         .85rem everywhere
+ * Labels/overlines:  .65rem everywhere
+ * Buttons:           .65rem everywhere
+ * Small meta:        .7rem (counter text, privacy, roles)
+ */
 @media(max-width:968px){
   .nav-links{display:none}
   .nav-hamburger{display:none}
   .nav-menu-overlay{display:none}
   .nav-mobile-right{display:flex}
 
-  /* Nav: logo always visible, CTA appears after scrolling past hero */
+  /* Nav */
   .nav{background:transparent;transition:background .4s ease,padding .4s ease}
   .nav.scrolled{background:rgba(26,23,20,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-  .nav-mobile-cta{opacity:0;pointer-events:none;transition:opacity .4s var(--ease),background .3s,color .3s}
+  .nav-mobile-cta{opacity:0;pointer-events:none;transition:opacity .4s var(--ease),background .3s,color .3s;font-size:.55rem;padding:.5rem 1rem}
   .nav.scrolled .nav-mobile-cta{opacity:1;pointer-events:auto}
 
-  /* Stack waitlist button below input */
-  .waitlist-form-group{flex-direction:column}
-  .waitlist-submit{padding:1rem}
+  /* Hero form — solid fill, no coarse outline */
+  .hero-waitlist{border:none;background:rgba(26,23,20,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+  .hero-waitlist-input{padding:.9rem 1.2rem;font-size:.85rem}
+  .hero-waitlist-input::placeholder{font-size:.65rem}
+  .hero-waitlist-btn{font-size:.65rem;letter-spacing:.16em}
 
-  /* Hero — centered layout on mobile */
+  /* Bottom waitlist form */
+  .waitlist-form-group{flex-direction:column;border:none;background:rgba(245,240,235,.06)}
+  .waitlist-input{padding:1rem 1.2rem;font-size:.85rem;border-bottom:1px solid rgba(245,240,235,.1)}
+  .waitlist-submit{padding:1rem;font-size:.65rem}
+
+  /* Hero */
   .hero{min-height:100vh}
   .hero-bg{background-position:calc(50% + 200px) center;background-size:cover;transform:scale(1.04);animation:heroZoomM 22s ease forwards}
   @keyframes heroZoomM{to{transform:scale(1)}}
   .hero-overlay{background:linear-gradient(180deg,rgba(26,23,20,.35) 0%,rgba(26,23,20,.1) 30%,rgba(26,23,20,.3) 55%,rgba(26,23,20,.7) 100%)}
-
-  .hero-credit{padding:0 1.5rem;margin-bottom:1.2rem}
+  .hero-credit{padding:0 1.5rem;margin-bottom:1.2rem;font-size:.65rem}
   .hero-credit strong{font-size:.65rem;letter-spacing:.12em}
-  .hero-credit{font-size:.62rem}
   .hero-title-wrap{margin-bottom:.8rem}
   .hero-title-line{flex-direction:column;gap:.1rem;align-items:center}
   .hero-title-word{font-size:clamp(4rem,16vw,7rem);line-height:.9}
 
+  /* Letter */
   .letter{padding:clamp(4rem,8vh,6rem) 1.5rem}
-  .letter-phase{font-size:clamp(1.5rem,6vw,2rem)}
+  .letter-phase{font-size:clamp(1.5rem,5vw,1.8rem)}
+  .letter-salutation{font-size:.65rem;margin-bottom:1.5rem}
+  .letter-body{font-size:.85rem;line-height:1.85}
+  .letter-sign{font-size:.9rem}
+
+  /* Collaboration story */
   .collab-story{padding:clamp(4rem,8vh,6rem) 1.5rem}
-  .collab-story-inner{grid-template-columns:1fr;gap:2.5rem}
+  .collab-story-inner{grid-template-columns:1fr;gap:2rem}
+  .collab-story-overline{font-size:.65rem}
   .collab-story-headline{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .collab-story-body{font-size:.85rem}
+
+  /* Tsuchikabe */
   .tsuchikabe{min-height:85vh}
   .tsuchikabe-content{padding:0 1.5rem clamp(3rem,6vh,5rem)}
+  .tsuchikabe-overline{font-size:.75rem}
   .tsuchikabe-title{font-size:clamp(2rem,8vw,3rem)}
-  .video-interlude{grid-template-columns:1fr}
-  .design-inner{grid-template-columns:1fr}
+  .tsuchikabe-body{font-size:.85rem}
 
-  /* Architects — tighter stacked cards on mobile */
+  .video-interlude{grid-template-columns:1fr}
+  .video-interlude-label{font-size:.65rem}
+
+  /* Design / Floorplan */
+  .design-inner{grid-template-columns:1fr}
+  .design-body{font-size:.85rem}
+  .design-image-caption{font-size:.65rem}
+
+  /* Architects */
   .architects-grid{grid-template-columns:1fr;gap:1rem}
   .architect-card{padding:1.8rem 1.5rem}
   .architect-card-img{aspect-ratio:16/10;margin-bottom:1.25rem}
   .architect-card-name{font-size:1.5rem;margin-bottom:.6rem}
-  .architect-card-role{margin-bottom:.8rem}
-  .architect-card-body{font-size:.8rem;line-height:1.7}
+  .architect-card-role{font-size:.7rem;margin-bottom:.8rem}
+  .architect-card-body{font-size:.85rem;line-height:1.7}
+  .architects-caption{font-size:.65rem}
   .architects-header{margin-bottom:2.5rem}
 
+  /* Furniture */
   .furniture{min-height:70vh}
   .furniture-inner{grid-template-columns:1fr}
   .furniture-image{display:none}
 
   .made-by{padding:clamp(4rem,8vh,6rem) 1.5rem}
   .made-by-name{font-size:clamp(1.2rem,5vw,1.6rem)}
-  .made-by-role{font-size:.75rem}
+  .made-by-role{font-size:.7rem}
 
-  /* Materials — 2-col grid on mobile, no horizontal scroll */
+  /* Materials */
   .materials-header{flex-direction:column;align-items:flex-start;gap:1rem}
-  .materials-body{text-align:left}
+  .materials-body{text-align:left;font-size:.85rem}
   .materials-track{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 1rem;overflow-x:visible;cursor:default}
   .material-card{flex:initial;width:100%}
   .material-card:nth-child(even){margin-top:0}
   .material-card-img{height:200px;margin-bottom:.75rem}
   .materials-hint{display:none}
 
-  /* Timeline — shrink whole bar to fit mobile width, no horizontal scroll */
+  /* Timeline — 2×2 grid */
+  .timeline-section{padding:clamp(6rem,12vh,10rem) 1.5rem clamp(3rem,6vh,5rem)}
   .timeline-header{flex-direction:column;align-items:flex-start;gap:.5rem;margin-bottom:2rem}
-  .timeline-track{gap:2px;overflow-x:visible}
-  .timeline-item{flex:1 1 0;min-width:0;padding:1rem .55rem}
+  .timeline-title{font-size:clamp(1.5rem,6vw,2.2rem)}
+  .timeline-subtitle{font-size:.65rem}
+  .timeline-track{display:grid;grid-template-columns:1fr 1fr;gap:2px;overflow-x:visible}
+  .timeline-item{min-width:0;padding:1.2rem 1rem}
   .timeline-dot{width:5px;height:5px;margin-bottom:.7rem}
-  .timeline-season{font-size:.52rem;letter-spacing:.14em;margin-bottom:.4rem}
-  .timeline-label{font-size:.78rem;line-height:1.25}
-  .timeline-item:nth-child(2) .timeline-label{font-size:.78rem}
+  .timeline-season{font-size:.65rem;letter-spacing:.14em;margin-bottom:.4rem}
+  .timeline-label{font-size:.9rem;line-height:1.25}
+  .timeline-item:nth-child(2) .timeline-label{font-size:.9rem}
   .timeline-item:nth-child(2) .timeline-dot{width:6px;height:6px}
   .timeline-detail{display:none}
 
+  /* Location */
+  .location{padding:clamp(4rem,8vh,6rem) 1.5rem}
+  .location-caption{font-size:.65rem}
+  .location-text{font-size:.85rem}
+
+  /* Waitlist */
+  .waitlist-headline{font-size:clamp(1.8rem,7vw,2.8rem)}
+  .waitlist-caption{font-size:.65rem}
+  .waitlist-body{font-size:.85rem}
+  .waitlist-counter-text{font-size:.7rem}
+  .waitlist-counter-num{font-size:1.3rem}
+  .waitlist-privacy{font-size:.7rem;color:rgba(245,240,235,.45)}
+
+  /* Projects */
   .projects{padding:3rem 1.5rem}
   .projects-grid{gap:.75rem}
+  .projects-caption{font-size:.65rem}
+  .projects-label{font-size:.85rem}
+  .projects-cta{font-size:.65rem}
+
+  /* Footer */
   .footer{flex-direction:column;gap:1.5rem;text-align:center}
   .footer-links{flex-wrap:wrap;justify-content:center}
+  .footer-links a{font-size:.65rem}
+  .footer-copy{font-size:.65rem}
 }
 @media(max-width:600px){
-  .hero-credit{font-size:.58rem;margin-bottom:1rem}
   .hero-title-wrap{padding:0 1.5rem}
   .hero-waitlist{width:92%;flex-direction:column}
-  .hero-waitlist-btn{padding:.8rem}
+  .hero-waitlist-btn{padding:.85rem}
   .nav{padding:1.2rem 1.25rem}
-  .nav-mobile-cta{font-size:.75rem;padding:.75rem 1.6rem;letter-spacing:.12em}
+  .nav-mobile-cta{font-size:.55rem;padding:.5rem 1rem}
   .design{padding:3rem 1.5rem}
   .materials-header{padding:0 1.5rem}
   .materials-track{padding:0 1.5rem;gap:1rem .75rem}
   .material-card-img{height:170px}
   .architects{padding:3rem 1rem}
   .furniture-text{padding:2rem 1.5rem}
-  .timeline-section{padding:3rem 1rem}
-  .timeline-item{padding:.9rem .4rem}
-  .timeline-season{font-size:.48rem}
-  .timeline-label{font-size:.72rem}
+  .timeline-section{padding:3rem 1.5rem}
+  .timeline-item{padding:1rem .75rem}
   .waitlist{padding:4rem 1.5rem}
   .footer{padding:2rem 1.5rem}
   .nav-menu-link{font-size:1.7rem}
