@@ -132,31 +132,17 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .hero-scroll::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:rgba(245,240,235,.5);animation:scrollDown 2s ease infinite}
 @keyframes scrollDown{to{top:100%}}
 
-/* ═══ STORY — Mersi-style split with CSS sticky ═══ */
-.story{position:relative;background:var(--bg)}
-.story-layout{display:flex;position:relative}
-
-/* Image panel — CSS sticky: stays in place while story-steps scroll past */
-.story-images{position:sticky;top:0;width:50%;height:100vh;flex-shrink:0;align-self:flex-start;background:var(--bg-deep);overflow:hidden;z-index:10}
-.story-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--ease)}
-.story-img.active{opacity:1}
-
-.story-img-label{position:absolute;bottom:2.5rem;left:2.5rem;z-index:3;font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.4);opacity:0;transition:opacity .6s;pointer-events:none}
-.story-img-label.active{opacity:1}
-
-.story-steps{width:50%;padding:15vh 4rem 15vh 3rem}
-.story-step{min-height:85vh;display:flex;align-items:center}
-.story-step:last-child{min-height:60vh}
-.story-step-inner{max-width:420px}
-.story-step-num{font-family:var(--serif);font-weight:300;font-size:5rem;line-height:1;color:rgba(26,23,20,.06);margin-bottom:.5rem}
-.story-step-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--text);margin-bottom:1.2rem;line-height:1.15}
-.story-step-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.85;color:var(--text-sec)}
-.story-step-detail{font-family:var(--sans);font-weight:300;font-size:.72rem;line-height:1.7;color:var(--text-muted);margin-top:1.2rem}
-.story-step-divider{width:40px;height:1px;background:var(--earth);opacity:.3;margin-top:2rem}
-.story-step-jp{font-family:var(--jp);font-weight:200;font-size:.8rem;color:var(--text-muted);margin-top:.8rem;opacity:.6}
-
-/* Mobile-only inline story images — hidden on desktop */
-.story-step-img{display:none}
+/* ═══ LETTER SECTION ═══ */
+.letter{position:relative;background:var(--bg);padding:clamp(6rem,14vh,12rem) 3rem}
+.letter-inner{max-width:900px;margin:0 auto}
+.letter-salutation{font-family:var(--sans);font-weight:400;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2.5rem}
+.letter-phase{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.25;color:var(--text);margin-bottom:2.5rem}
+.letter-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:2;color:var(--text-sec)}
+.letter-body p{margin-bottom:1.6rem}
+.letter-body strong{font-weight:400;color:var(--text)}
+.letter-divider{width:40px;height:1px;background:var(--earth);opacity:.3;margin:2.5rem 0}
+.letter-sign{font-family:var(--serif);font-style:italic;font-weight:300;font-size:1rem;color:var(--text-sec);text-align:right}
+.letter-sign span{display:block;margin-top:.3rem}
 
 /* ═══ TSUCHIKABE — the star section ═══ */
 .tsuchikabe{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--bg-deep)}
@@ -164,11 +150,10 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .tsuchikabe-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.9)}
 .tsuchikabe-gradient{position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(26,23,20,.85) 0%,rgba(26,23,20,.4) 35%,rgba(26,23,20,.05) 65%,rgba(26,23,20,.2) 100%)}
 .tsuchikabe-content{position:relative;z-index:2;max-width:720px;padding:0 3rem clamp(4rem,8vh,7rem);color:var(--text-light)}
-.tsuchikabe-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,240,235,.45);margin-bottom:1.5rem}
+.tsuchikabe-overline{font-family:var(--sans);font-weight:400;font-size:clamp(.75rem,1.2vw,1rem);letter-spacing:.25em;text-transform:uppercase;color:rgba(245,240,235,.7);margin-bottom:1.5rem}
 .tsuchikabe-title{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5vw,4rem);line-height:1.1;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:.01em}
 .tsuchikabe-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:1.9;color:rgba(245,240,235,.75);max-width:540px}
 .tsuchikabe-body + .tsuchikabe-body{margin-top:1rem}
-.tsuchikabe-jp{font-family:var(--jp);font-weight:200;font-size:.85rem;color:rgba(245,240,235,.3);margin-top:1.5rem;letter-spacing:.1em}
 
 /* ═══ VIDEO INTERLUDE — tsuchikabe process ═══ */
 .video-interlude{display:grid;grid-template-columns:1fr 1fr;min-height:60vh;background:var(--bg-deep)}
@@ -189,18 +174,14 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .design-image-bg{width:100%;aspect-ratio:4/3;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:var(--bg)}
 .design-image-caption{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);margin-top:.8rem}
 
-/* ═══ VISION QUOTE — with lattice video ═══ */
-.vision-wrap{position:relative;overflow:hidden;background:var(--bg-deep)}
-.vision-wrap video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);object-fit:cover;opacity:.12;pointer-events:none;filter:brightness(.5)}
-.vision-inner{position:relative;z-index:2;padding:clamp(7rem,16vh,14rem) 3rem;text-align:center;max-width:850px;margin:0 auto}
-.vision-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.55;color:var(--text-light);margin-bottom:2rem}
-.vision-cite{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,235,.45)}
-
-/* Light background variant */
-.vision-light{background:var(--bg)}
-.vision-light video{display:none}
-.vision-light .vision-text{color:var(--text);font-style:italic}
-.vision-light .vision-cite{color:var(--text-muted)}
+/* ═══ COLLABORATION STORY ═══ */
+.collab-story{position:relative;background:var(--bg);padding:clamp(6rem,14vh,12rem) 3rem}
+.collab-story-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(4rem,8vw,8rem);align-items:start}
+.collab-story-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2rem}
+.collab-story-headline{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,3.5vw,3rem);line-height:1.2;color:var(--text)}
+.collab-story-body{font-family:var(--sans);font-weight:300;font-size:.88rem;line-height:2;color:var(--text-sec)}
+.collab-story-body p{margin-bottom:1.6rem}
+.collab-story-body strong{font-weight:400;color:var(--text)}
 
 /* ═══ ARCHITECTS ═══ */
 .architects{background:var(--bg-deep);padding:clamp(5rem,10vh,10rem) 3rem}
@@ -399,14 +380,11 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .hero-title-line{flex-direction:column;gap:.1rem;align-items:center}
   .hero-title-word{font-size:clamp(4rem,16vw,7rem);line-height:.9}
 
-  .story-layout{flex-direction:column}
-  .story-images{display:none}
-  .story-steps{width:100%;padding:1rem 0}
-
-  /* Text above, image below */
-  .story-step{min-height:auto;padding:0;flex-direction:column}
-  .story-step-inner{padding:2.5rem 2rem 1.5rem}
-  .story-step-img{display:block;width:100%;height:auto;object-fit:contain;filter:brightness(.85) saturate(.95)}
+  .letter{padding:clamp(4rem,8vh,6rem) 1.5rem}
+  .letter-phase{font-size:clamp(1.5rem,6vw,2rem)}
+  .collab-story{padding:clamp(4rem,8vh,6rem) 1.5rem}
+  .collab-story-inner{grid-template-columns:1fr;gap:2.5rem}
+  .collab-story-headline{font-size:clamp(1.6rem,6vw,2.2rem)}
   .tsuchikabe{min-height:85vh}
   .tsuchikabe-content{padding:0 1.5rem clamp(3rem,6vh,5rem)}
   .tsuchikabe-title{font-size:clamp(2rem,8vw,3rem)}
@@ -462,8 +440,6 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .hero-waitlist-btn{padding:.8rem}
   .nav{padding:1.2rem 1.25rem}
   .nav-mobile-cta{font-size:.75rem;padding:.75rem 1.6rem;letter-spacing:.12em}
-  .story-steps{padding:.5rem 0}
-  .story-step-inner{padding:2rem 1.5rem 1.2rem}
   .design{padding:3rem 1.5rem}
   .materials-header{padding:0 1.5rem}
   .materials-track{padding:0 1.5rem;gap:1rem .75rem}
@@ -562,50 +538,22 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   </div>
 </section>
 
-<!-- ═══ STORY — Mersi-style split with CSS sticky ═══ -->
-<section class="story" id="story">
-  <div class="story-layout">
-    <!-- Image panel: CSS sticky — stays fixed while story-steps scroll -->
-    <div class="story-images" id="storyImages">
-      <img class="story-img active" id="storyImg0" src="images/story-grain.png" alt="Ceramic vase and branch on wooden bench against earthen plaster wall">
-      <img class="story-img" id="storyImg1" src="images/story-light.png" alt="Woven lantern catching afternoon light through shoji">
-      <img class="story-img" id="storyImg2" src="images/story-interval.png" alt="Reclaimed wood frame on textured wall above dining table">
-      <span class="story-img-label active" id="storyLabel0">Where it all begins</span>
-      <span class="story-img-label" id="storyLabel1">The memory of making</span>
-      <span class="story-img-label" id="storyLabel2">A return to where it started</span>
+<!-- ═══ A LETTER FROM US TO YOU ═══ -->
+<section class="letter" id="story">
+  <div class="letter-inner reveal">
+    <p class="letter-salutation">A letter from us to you</p>
+    <h2 class="letter-phase">A new phase, continued stories</h2>
+    <div class="letter-body">
+      <p>To those who have stayed with us, visited us, or followed our journey from afar.</p>
+      <p>Maana began with the restoration of a single machiya, Maana Kyoto. As we slowly expanded to not just a collection of spaces, but a gathering of people, stories and rituals, we found ourselves endlessly inspired by the masters who welcomed us into their worlds, and by our guests who gave new life to our spaces.</p>
+      <p><strong>Each phase deepened our relationship with time.</strong> Kyoto truly has a way of returning you to what matters. The beautiful moments in between.</p>
+      <p>We began asking what it would mean to build a new home from the ground up, while carrying all the stories with us, from the past to the present.</p>
+      <p>We look forward to sharing our findings with you in this new project, Maana Annex.</p>
     </div>
-
-    <div class="story-steps" id="storySteps">
-      <div class="story-step" data-step="0">
-        <div class="story-step-inner reveal">
-          <span class="story-step-num">01</span>
-          <h3 class="story-step-title">The Intention</h3>
-          <p class="story-step-body">Maana Annex is the first home we have built from the ground up using reclaimed materials from our machiya. Since our first home a decade ago, everything we have learned about living, restoring, and making space has been gathered here, shaping a new story that feels wholly our own.<br><br>More than just a place to stay, the Annex is a reflection of the stories and people who have inspired us along the way.</p>
-          <p class="story-step-jp">意図 — 心を込めた新しい始まり</p>
-          <div class="story-step-divider"></div>
-        </div>
-        <img class="story-step-img" src="images/story-grain.png" alt="Ceramic vase and branch on wooden bench against earthen plaster wall" loading="lazy">
-      </div>
-      <div class="story-step" data-step="1">
-        <div class="story-step-inner reveal">
-          <span class="story-step-num">02</span>
-          <h3 class="story-step-title">The Hands</h3>
-          <p class="story-step-body">The Annex was created with many hands and we wanted that human touch to remain visible in a world shaped by mass production and uniform templates.<br><br>You may notice the gentle arc of a plasterer's trowel left in the wall, or a ceramicist's fingerprint pressed into a glaze. The recycled earthen walls, shaped by our sakan, a traditional Japanese plasterer, still carry a faint mineral scent on cool mornings before the room begins to warm.<br><br>The Annex is a celebration of process, artistry, and the beauty of natural materials made slowly by human hands.</p>
-          <p class="story-step-jp">手の記憶 — すべての表面に宿る人の証</p>
-          <div class="story-step-divider"></div>
-        </div>
-        <img class="story-step-img" src="images/story-light.png" alt="Woven lantern catching afternoon light through shoji" loading="lazy">
-      </div>
-      <div class="story-step" data-step="2">
-        <div class="story-step-inner reveal">
-          <span class="story-step-num">03</span>
-          <h3 class="story-step-title">Full Circle</h3>
-          <p class="story-step-body">The Annex sits next door to the very first machiya we restored. The house where Maana began. After years of working outward, opening new homes across Kyoto, we found ourselves building again on the same street.<br><br>For Maana, the Annex is more than a place to stay. It is a continuation of our story, woven together through memory, material, and the people who have walked alongside us over the years. And in welcoming guests here, it feels as though we are opening the door not simply to a stay, but to a homecoming.</p>
-          <p class="story-step-jp">円環 — 始まりの場所に帰る</p>
-          <div class="story-step-divider"></div>
-        </div>
-        <img class="story-step-img" src="images/story-interval.png" alt="Reclaimed wood frame on textured wall above dining table" loading="lazy">
-      </div>
+    <div class="letter-divider"></div>
+    <div class="letter-sign">
+      <span>With gratitude,</span>
+      <span>Irene and Hana</span>
     </div>
   </div>
 </section>
@@ -618,9 +566,9 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   <div class="tsuchikabe-gradient"></div>
   <div class="tsuchikabe-content reveal">
     <p class="tsuchikabe-overline">Tsuchikabe &mdash; 土壁</p>
-    <h2 class="tsuchikabe-title">A second life for our earthen walls.</h2>
-    <p class="tsuchikabe-body">The tsuchikabe walls in this home once stood inside Maana Atelier. Carefully taken down by hand, each fragment of earth was cleaned, reclaimed, and mixed again into fresh clay by the Maana team. The same earth can hereby begin a second life in a new home, carrying the memories from Maana forward.</p>
-    <p class="tsuchikabe-jp">古い土が新しい壁になる</p>
+    <h2 class="tsuchikabe-title">A second life.</h2>
+    <p class="tsuchikabe-body">The earthen walls, known as tsuchi-kabe, once lived inside our workshop space, Maana Atelier, and have now found a second life in the Annex. Made simply from fermented rice straw, seaweed, and local earth, these walls were carefully taken down, sifted by hand to remove impurities, and prepared again to be rebuilt.</p>
+    <p class="tsuchikabe-body">By reusing them, we allow the earth to tell its story twice, bringing the memories with it. It is a slow and rather rare process today, one that asks for patience and care.</p>
   </div>
 </section>
 
@@ -640,13 +588,20 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   </div>
 </section>
 
-<!-- ═══ VISION QUOTE ═══ -->
-<div class="vision-wrap vision-light">
-  <div class="vision-inner reveal">
-    <p class="vision-text">"The concept of 'Layering of time' reflects on Kyoto's rich history, encompassing many layers found in its architecture, craftsmanship, materials and colors. It embodies our wise to create contemporary architecture deeply rooted in Japanese culture."</p>
-    <p class="vision-cite">Norm Architects</p>
+<!-- ═══ COLLABORATION STORY ═══ -->
+<section class="collab-story">
+  <div class="collab-story-inner">
+    <div class="collab-story-left reveal">
+      <p class="collab-story-overline">The Story of Maana &times; Norm Architects &times; KAD</p>
+      <h2 class="collab-story-headline">Some collaborations begin with a brief. Ours began with a friendship.</h2>
+    </div>
+    <div class="collab-story-body reveal reveal-d1">
+      <p>For years, we have shared a dialogue with our friends in Copenhagen, connected by a <strong>mutual love for Japanese craftsmanship and quiet living</strong>. Through countless conversations, we often found ourselves wondering why certain handcrafted materials age into beauty while others simply fade.</p>
+      <p>Together with <strong>Norm's Japanese partner</strong> Keiji Ashizawa (KAD), we wanted to create a home together that holds everything we have wondered and come to love over the last eight years, while looking toward the future of Maana.</p>
+      <p>Our approaches are different, yet complementary. Maana embraces texture, warmth, and imperfection, while Norm and Keiji Ashizawa are known for their precision, restraint, and quiet clarity. This juxtaposition is what makes the collaboration so special.</p>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ═══ ARCHITECTS ═══ -->
 <section class="architects" id="architects">
@@ -692,7 +647,7 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
 <!-- ═══ MATERIALS ═══ -->
 <section class="materials" id="materials">
   <div class="materials-header reveal">
-    <h2 class="materials-headline">Made to gather<br>traces of living.</h2>
+    <h2 class="materials-headline">Heritage Materials</h2>
   </div>
   <div class="materials-track" id="materialsTrack">
     <div class="material-card float-up">
@@ -875,36 +830,6 @@ const revealObs=new IntersectionObserver(entries=>{
 },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal,.float-up').forEach(el=>revealObs.observe(el));
 
-// ─── Story: image swapping based on which step is in view ───
-const storySteps=document.querySelectorAll('.story-step');
-const storyImgs=[
-  document.getElementById('storyImg0'),
-  document.getElementById('storyImg1'),
-  document.getElementById('storyImg2')
-];
-const storyLabels=[
-  document.getElementById('storyLabel0'),
-  document.getElementById('storyLabel1'),
-  document.getElementById('storyLabel2')
-];
-let activeStoryIdx=0;
-
-// Swap images based on which step is in view
-const stepObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const idx=parseInt(e.target.dataset.step);
-      if(idx!==activeStoryIdx&&storyImgs[idx]){
-        storyImgs[activeStoryIdx].classList.remove('active');
-        storyImgs[idx].classList.add('active');
-        if(storyLabels[activeStoryIdx])storyLabels[activeStoryIdx].classList.remove('active');
-        if(storyLabels[idx])storyLabels[idx].classList.add('active');
-        activeStoryIdx=idx;
-      }
-    }
-  });
-},{threshold:.4});
-storySteps.forEach(s=>stepObs.observe(s));
 
 // ─── Mobile nav: hamburger + waitlist CTA ───
 const navHamburger=document.getElementById('navHamburger');
