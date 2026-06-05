@@ -248,7 +248,8 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .material-card:hover .material-card-img-inner{transform:scale(1.06)}
 .material-card-en{font-family:var(--sans);font-weight:500;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text)}
 .material-card-jp{font-family:var(--jp);font-weight:200;font-size:.95rem;color:var(--text-muted);margin-top:.15rem}
-.materials-hint{font-family:var(--sans);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-top:1.5rem}
+.materials-hint{display:none;font-family:var(--sans);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-top:1.5rem}
+@media(min-width:969px) and (max-width:1280px){.materials-hint{display:block}}
 
 /* ═══ CONSTRUCTION + TIMELINE (combined) ═══ */
 .construction-timeline{position:relative;overflow:hidden;background:var(--bg-deep)}
@@ -448,7 +449,6 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .material-card{flex:initial;width:100%}
   .material-card:nth-child(even){margin-top:0}
   .material-card-img{height:200px;margin-bottom:.75rem}
-  .materials-hint{display:none}
 
   /* Timeline — 2×2 grid */
   .timeline-section{padding:clamp(6rem,12vh,10rem) 1.5rem clamp(3rem,6vh,5rem)}
