@@ -13,7 +13,7 @@
 <style>
 /* ═══ TOKENS ═══ */
 :root{
-  --bg:#F5F0EB;--bg-deep:#1A1714;--bg-warm:#E8E0D6;
+  --bg:#F0EBEB;--bg-deep:#1A1714;--bg-warm:#E6E0DC;
   --text:#1A1714;--text-light:#F5F0EB;--text-muted:#9A8E82;--text-sec:#6B6158;
   --earth:#8B7355;
   --serif:'Cormorant Garamond','Noto Serif JP',serif;
@@ -197,6 +197,37 @@ textarea.hero-followup-field{resize:vertical;min-height:70px;line-height:1.6}
 .architect-card-loc{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.4);margin-bottom:.8rem}
 .architect-card-name{font-family:var(--serif);font-weight:300;font-size:1.8rem;color:var(--text-light);margin-bottom:1rem;line-height:1.2}
 .architect-card-role{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--earth);margin-bottom:1rem}
+
+/* ═══ INTERVIEW — COMPACT EDITORIAL ═══ */
+.interview{position:relative;background:var(--bg);padding:clamp(6rem,12vh,10rem) 3rem}
+.interview-inner{max-width:900px;margin:0 auto}
+.interview-header{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:clamp(3rem,5vh,4.5rem)}
+.interview-header-text{flex:1}
+.interview-overline{font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.interview-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.2;color:var(--text)}
+.interview-header-img{width:clamp(100px,12vw,150px);height:clamp(130px,15vw,190px);flex-shrink:0;overflow:hidden}
+.interview-header-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) brightness(.9)}
+
+.interview-topic{padding:clamp(1.8rem,3vh,2.5rem) 0;border-top:1px solid rgba(139,115,85,.1)}
+.interview-topic-label{font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--earth);margin-bottom:.8rem}
+.interview-topic-heading{font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,2.5vw,1.8rem);line-height:1.25;color:var(--text);margin-bottom:1rem}
+.interview-topic-body{font-family:var(--sans);font-weight:300;font-size:.85rem;line-height:1.85;color:var(--text-sec);max-width:720px}
+.interview-topic-body em{font-style:italic;color:var(--text)}
+
+/* Accordion expand */
+.interview-topic-expand{display:none;overflow:hidden;max-height:0;transition:max-height .6s var(--ease),opacity .4s;opacity:0}
+.interview-topic-expand.open{display:block;max-height:600px;opacity:1}
+.interview-topic-expand-body{font-family:var(--sans);font-weight:300;font-size:.85rem;line-height:1.85;color:var(--text-sec);padding-top:1rem}
+.interview-topic-expand-body em{font-style:italic;color:var(--text)}
+.interview-toggle{background:none;border:none;font-family:var(--sans);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--earth);cursor:pointer;padding:.4rem 0;margin-top:.8rem;transition:color .3s;display:inline-flex;align-items:center;gap:.4rem}
+.interview-toggle:hover{color:var(--text)}
+.interview-toggle-icon{display:inline-block;width:16px;height:16px;border:1px solid var(--earth);border-radius:50%;position:relative;transition:transform .3s var(--ease),border-color .3s}
+.interview-toggle-icon::before,.interview-toggle-icon::after{content:'';position:absolute;background:var(--earth);top:50%;left:50%;transform:translate(-50%,-50%);transition:transform .3s var(--ease),background .3s}
+.interview-toggle-icon::before{width:7px;height:1px}
+.interview-toggle-icon::after{width:1px;height:7px}
+.interview-toggle.open .interview-toggle-icon{transform:rotate(45deg)}
+.interview-toggle:hover .interview-toggle-icon{border-color:var(--text)}
+.interview-toggle:hover .interview-toggle-icon::before,.interview-toggle:hover .interview-toggle-icon::after{background:var(--text)}
 .architect-card-body{font-family:var(--sans);font-weight:300;font-size:.85rem;line-height:1.8;color:rgba(245,240,235,.5);max-width:420px}
 
 /* ═══ KARIMOKU / FURNITURE ═══ */
@@ -432,6 +463,15 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
   .architect-card-body{font-size:.85rem;line-height:1.7}
   .architects-caption{font-size:.65rem}
   .architects-header{margin-bottom:2.5rem}
+
+  /* Interview */
+  .interview{padding:clamp(4rem,8vh,6rem) 1.5rem}
+  .interview-header{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .interview-header-img{width:90px;height:115px}
+  .interview-title{font-size:clamp(1.5rem,5vw,1.8rem)}
+  .interview-topic-heading{font-size:clamp(1.2rem,4.5vw,1.5rem)}
+  .interview-topic-body{font-size:.82rem}
+  .interview-topic-expand-body{font-size:.82rem}
 
   /* Furniture */
   .furniture{min-height:70vh}
@@ -679,6 +719,53 @@ textarea.waitlist-followup-field{resize:vertical;min-height:80px;line-height:1.6
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ INTERVIEW — Norm Architects ═══ -->
+<section class="interview" id="interview">
+  <div class="interview-inner">
+
+    <div class="interview-header reveal">
+      <div class="interview-header-text">
+        <p class="interview-overline">In Conversation</p>
+        <h2 class="interview-title">Norm Architects on<br>stillness, craft, and<br>building what belongs.</h2>
+      </div>
+      <div class="interview-header-img">
+        <img src="images/Norm Profile.jpg" alt="Norm Architects" loading="lazy">
+      </div>
+    </div>
+
+    <div class="interview-topic reveal">
+      <p class="interview-topic-label">01 &mdash; The Kyoto Light</p>
+      <h3 class="interview-topic-heading">It doesn't rush you into decisions.</h3>
+      <p class="interview-topic-body">Kyoto slows you down before you've even started working. We spent most of our first visit just sitting in the neighbouring machiya, watching how the light moved through the rooms. <em>That slowness became the brief.</em></p>
+      <button class="interview-toggle" onclick="this.classList.toggle('open');this.previousElementSibling.nextElementSibling.classList.toggle('open')"><span class="interview-toggle-icon"></span>Continue reading</button>
+      <div class="interview-topic-expand">
+        <p class="interview-topic-expand-body">We didn't want to impose a Scandinavian aesthetic onto a Japanese context. We wanted to find the overlap — the places where our shared values around simplicity and natural materials already existed. Kyoto taught us that restraint is not about taking things away. <em>It's about knowing what was never needed in the first place.</em></p>
+      </div>
+    </div>
+
+    <div class="interview-topic reveal">
+      <p class="interview-topic-label">02 &mdash; On Imperfection</p>
+      <h3 class="interview-topic-heading">The walls carry fingerprints. They're alive.</h3>
+      <p class="interview-topic-body">In Copenhagen, we refine until every edge is resolved. But tsuchikabe — the earthen walls — they carry air bubbles, slight undulations, the memory of hands.</p>
+      <button class="interview-toggle" onclick="this.classList.toggle('open');this.previousElementSibling.nextElementSibling.classList.toggle('open')"><span class="interview-toggle-icon"></span>Continue reading</button>
+      <div class="interview-topic-expand">
+        <p class="interview-topic-expand-body">Our role was to create a framework where that rawness feels intentional. <em>Where the precision of the joinery meets the softness of the plaster, and neither dominates.</em> That balance is something you can feel in the room, even if you can't name it. It's the quality that makes you want to stay a little longer.</p>
+      </div>
+    </div>
+
+    <div class="interview-topic reveal">
+      <p class="interview-topic-label">03 &mdash; Disappearing Architecture</p>
+      <h3 class="interview-topic-heading">The best spaces disappear into the experience.</h3>
+      <p class="interview-topic-body">You should notice the temperature of the air, the texture under your feet, the way a shadow falls across the wall before you notice <em>the design</em>.</p>
+      <button class="interview-toggle" onclick="this.classList.toggle('open');this.previousElementSibling.nextElementSibling.classList.toggle('open')"><span class="interview-toggle-icon"></span>Continue reading</button>
+      <div class="interview-topic-expand">
+        <p class="interview-topic-expand-body">If someone walks in and immediately thinks about the architecture, we probably haven't done our job. The best compliment is when a guest says they slept better than they have in years, or that they finally finished the book they'd been carrying around. <em>That's the design working.</em></p>
+      </div>
+    </div>
+
   </div>
 </section>
 
